@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!-- saved from url=(0055)https://marketsnap.herokuapp.com/accounts/login/?next=/ -->
+<html lang="ar" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" type="image/jpg" href="https://marketsnap.herokuapp.com/static/images/logos/favicon.9db422efdd85.png">
+
+
+    <title>Market Snap</title>
+    <link rel="stylesheet" href="{% static 'css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  </head>
+  <body class=" rtl">
+    <div class="container-scroller">
+      <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth">
+          <div class="row flex-grow">
+            <div class="col-lg-4 mx-auto">
+              <div class="auth-form-light text-left p-5">
+                <div class="brand-logo d-flex justify-content-center">
+                  <img src="https://www.miyahuna.com.jo/assets/images/logo.png">
+                </div>
+                <form class="pt-3" action="{% url 'login' %}" method="post">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+
+                  <div class="mt-3 d-flex">
+                    <button class="btn btn-gradient-primary font-weight-medium auth-form-btn">دخول</button>
+                  </div>
+                  <p class="pt-2 text-muted">في حال نسيت كلمة المرور اتصل على : 0598123416</p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+
+
+
+
+
+</body></html>
