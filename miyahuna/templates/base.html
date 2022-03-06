@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://marketsnap.herokuapp.com/accounts/dashboard/ -->
+<html lang="ar" dir="rtl">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="shortcut icon" type="image/jpg" href="{% static 'imgs/logoMini.png' %}">
+      <title>Market Snap</title>
+      {% include  "css.html" %}
+   </head>
+   <body class=" rtl">
+      {% include "nav.html" %}
+      <div class="container-fluid page-body-wrapper">
+         {% include "sidebar.html" %}
+         <div class="main-panel">
+            <div class="content-wrapper">
+               {% block content %}
+               {% endblock %}
+               <footer class="footer">
+                  <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                     <span class="text-muted text-center text-sm-left d-block d-sm-inline-block"><span>2021</span> @ Miyahuna</span>
+                  </div>
+               </footer>
+            </div>
+         </div>
+      </div>
+      {% include 'js.html' %}
+   </body>
+</html>
