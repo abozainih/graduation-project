@@ -12,7 +12,7 @@ $(document).ready(function() {
                 className:'btn btn-info btn-fw',
                 attr: {
                     'data-toggle' :'modal',
-                    'data-target' :"#exampleModal"
+                    'data-target' :"#addCustomer"
                 }
             }
         ],

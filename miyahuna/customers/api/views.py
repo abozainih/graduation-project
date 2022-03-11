@@ -1,3 +1,5 @@
+from django.shortcuts import redirect
+
 from accounts.models import User
 from .serializers import CustomerSerializer, CustomerUser
 from customers.models import Customer
@@ -14,4 +16,8 @@ class CustomerListView(generics.ListAPIView):
 class CustomerCreateView(generics.CreateAPIView):
     serializer_class = CustomerUser
     permission_classes = [IsAdminUser]
+
+    def post(self, *args, **kwargs):
+        super().post(*args, **kwargs)
+        return redirect('CustomersList')
 

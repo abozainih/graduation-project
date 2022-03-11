@@ -2,6 +2,11 @@
 {% load static %}
 {% block css %}
    <link rel="stylesheet" href="{% static 'css/dataTables.bootstrap4.min.css' %}">
+    <style>
+        .form-group {
+            margin-bottom : 0.3rem;
+         }
+    </style>
 {% endblock %}
 {% block content %}
 <div class="card">
@@ -25,25 +30,76 @@
                         </table>
                      </div>
                   </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+<div class="modal fade" id="addCustomer" tabindex="-1" role="dialog" aria-labelledby="addCustomer" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addCustomer">اضافة مشترك جديد</h5>
+        </div>
+        <div class="modal-body">
+            <form action="{% url 'createCust' %}" method="post" class="forms-sample">
+                {% csrf_token %}
+            <div class="form-group row">
+               <label for="firstName" class="col-sm-3 col-form-label">الاسم الاول</label>
+               <div class="col-sm-9">
+               <input type="text" name="user.first_name" class="form-control" id="firstName" placeholder="الاسم الاول">
+               </div>
+            </div>
+            <div class="form-group row">
+               <label for="lastName" class="col-sm-3 col-form-label">الاسم الثاني</label>
+               <div class="col-sm-9">
+               <input type="text" name="user.last_name" class="form-control" id="lastName" placeholder="الاسم الثاني">
+               </div>
+            </div>
+            <div class="form-group row">
+                <label for="username" class="col-sm-3 col-form-label">اسم المستخدم</label>
+                <div class="col-sm-9">
+                <input type="text" name="user.username" class="form-control" id="username" placeholder="اسم المستخدم">
+                </div>
+             </div>
+            <div class="form-group row">
+               <label for="phonenumber" class="col-sm-3 col-form-label">رقم الهاتف</label>
+               <div class="col-sm-9">
+               <input type="text" name="user.phone_number" class="form-control" id="phonenumber" placeholder="رقم الهاتف">
+               </div>
+            </div>
+            <div class="form-group row">
+               <label for="address_1" class="col-sm-3 col-form-label">العنوان 1</label>
+               <div class="col-sm-9">
+               <input type="text" name="user.address1" class="form-control" id="address_1" placeholder="العنوان 1">
+               </div>
+            </div>
+            <div class="form-group row">
+               <label for="address_2" class="col-sm-3 col-form-label">العنوان 2</label>
+               <div class="col-sm-9">
+               <input type="text" name="user.address1" class="form-control" id="address_2" placeholder="العنوان 2">
+               </div>
+            </div>
+            <div class="form-group row">
+               <label for="gallonprice" class="col-sm-3 col-form-label">سعر القاروره</label>
+               <div class="col-sm-9">
+               <input type="number" name="price_per_gallon" class="form-control" id="gallonprice" placeholder="سعر القاروره">
+               </div>
+            </div>
+            <div class="form-group row">
+               <label for="password" class="col-sm-3 col-form-label">كلمة السر</label>
+               <div class="col-sm-9">
+               <input name="user.password" type="password" class="form-control" id="password" placeholder="كلمة السر">
+               </div>
+            </div>
+            <div class="form-group row">
+               <label for="confirmpasswor" class="col-sm-3 col-form-label">اعد كتابة كلمة السر</label>
+               <div class="col-sm-9">
+               <input type="password" class="form-control" id="confirmpassword" placeholder="كلمة السر">
+               </div>
+            </div>
+            <button type="submit" class="btn btn-gradient-primary mr-2">حفظ</button>
+            <button class="btn btn-light"  data-dismiss="modal">الغاء</button>
+         </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 {% endblock %}
 {% block js %}
