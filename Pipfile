@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 django = "*"
 django-phonenumber-field = {extras = ["phonenumbers"], version = "*"}
+djangorestframework = "*"
+djangorestframework-datatables = "*"
 
 [dev-packages]
 

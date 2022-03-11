@@ -50,9 +50,9 @@
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
 @import url("bootstrap.min.css");
-@import url("../../node_modules/datatables.net-bs/css/dataTables.bootstrap.min.37efc13c0158.css");
-@import url("../../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.e69cf988c1f5.css");
-@import url("../../node_modules/select2/dist/css/select2.min.e71c39430469.css");
+@import url("dataTables.bootstrap4.min.css");
+@import url("bootstrap-datepicker.min.css");
+@import url("select2.min.css");
 
 @-webkit-keyframes flash {
   0% {
@@ -10176,27 +10176,27 @@ a.text-dark:hover, a.text-dark:focus {
 /* Fonts */
 @font-face {
   font-family: 'ubuntu-light';
-  src: url("../fonts/Ubuntu/Ubuntu-Light.b983ed7d8c2e.eot");
+  src: url("../fonts/Ubuntu/Ubuntu-Light.eot");
   /* IE9 Compat Modes */
-  src: url("../fonts/Ubuntu/Ubuntu-Light.a2747bdce850.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Light.50bee00c10cd.woff") format("woff"), url("../fonts/Ubuntu/Ubuntu-Light.4cebf8502481.ttf") format("truetype"); }
+  src: url("../fonts/Ubuntu/Ubuntu-Light.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Light.woff") format("woff"), url("../fonts/Ubuntu/Ubuntu-Light.ttf") format("truetype"); }
 
 @font-face {
   font-family: 'ubuntu-regular';
-  src: url("../fonts/Ubuntu/Ubuntu-Regular.a876ac10e23a.eot");
+  src: url("../fonts/Ubuntu/Ubuntu-Regular.eot");
   /* IE9 Compat Modes */
-  src: url("../fonts/Ubuntu/Ubuntu-Regular.0782ac86c2c0.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Regular.690d3622d8d3.woff") format("woff"), url("../fonts/Ubuntu/Ubuntu-Regular.e7da1b79b58d.ttf") format("truetype"); }
+  src: url("../fonts/Ubuntu/Ubuntu-Regular.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Regular.woff") format("woff"), url("../fonts/Ubuntu/Ubuntu-Regular.ttf") format("truetype"); }
 
 @font-face {
   font-family: 'ubuntu-medium';
-  src: url("../fonts/Ubuntu/Ubuntu-Medium.a690c126aca1.eot");
+  src: url("../fonts/Ubuntu/Ubuntu-Medium.eot");
   /* IE9 Compat Modes */
-  src: url("../fonts/Ubuntu/Ubuntu-Medium.67be82c5bf31.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Medium.a46de1032aba.woff") format("woff"), url("../fonts/Ubuntu/Ubuntu-Medium.aefa01145089.ttf") format("truetype"); }
+  src: url("../fonts/Ubuntu/Ubuntu-Medium.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Medium.woff") format("woff"), url("../fonts/Ubuntu/Ubuntu-Mediu.ttf") format("truetype"); }
 
 @font-face {
   font-family: 'ubuntu-bold';
-  src: url("../fonts/Ubuntu/Ubuntu-Bold.cece6cb2e964.eot");
+  src: url("../fonts/Ubuntu/Ubuntu-Bold.eot");
   /* IE9 Compat Modes */
-  src: url("../fonts/Ubuntu/Ubuntu-Bold.81f39b100c12.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Bold.e33d177da1b2.woff") format("woff"), url("../fonts/Ubuntu/Ubuntu-Bold.7308c07c89a1.ttf") format("truetype"); }
+  src: url("../fonts/Ubuntu/Ubuntu-Bold.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Bold.woff") format("woff"), url("../fonts/Ubuntu/Ubuntu-Bold.ttf") format("truetype"); }
 
 .text-twitter {
   color: #2caae1; }

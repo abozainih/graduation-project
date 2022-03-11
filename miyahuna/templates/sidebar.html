@@ -1,13 +1,15 @@
+{% url 'CustomersList' as customer_list %}
+{% url 'mainpanel' as main %}
 <nav class="d-print-none sidebar sidebar-offcanvas" id="sidebar">
                <ul class="nav ps ps--active-y py-4">
-                  <li class="nav-item active">
-                     <a class="nav-link" href="main.html">
+                  <li class="nav-item {% if request.get_full_path == main %}active{% endif %}">
+                     <a class="nav-link " href="{{main}}">
                      <span class="menu-title">الرئيسيه</span>
                      <i class="mdi mdi-home menu-icon"></i>
                      </a>
                   </li>
-                  <li class="nav-item ">
-                     <a class="nav-link" href="clients.html">
+                  <li class="nav-item {% if request.get_full_path == customer_list %}active{% endif %}">
+                     <a class="nav-link " href="{{customer_list}}">
                      <span class="menu-title">المشتركين</span>
                      <i class="mdi mdi-account-group menu-icon"></i>
                      </a>

@@ -8,6 +8,8 @@
       <link rel="shortcut icon" type="image/jpg" href="{% static 'imgs/logoMini.png' %}">
       <title>Market Snap</title>
       {% include  "css.html" %}
+      {% block css %}
+      {% endblock %}
    </head>
    <body class=" rtl">
       {% include "nav.html" %}
@@ -17,14 +19,16 @@
             <div class="content-wrapper">
                {% block content %}
                {% endblock %}
-               <footer class="footer">
-                  <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                     <span class="text-muted text-center text-sm-left d-block d-sm-inline-block"><span>2021</span> @ Miyahuna</span>
-                  </div>
-               </footer>
             </div>
+            <footer class="footer">
+               <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                  <span class="text-muted text-center text-sm-left d-block d-sm-inline-block"><span>2021</span> @ Miyahuna</span>
+               </div>
+            </footer>
          </div>
       </div>
       {% include 'js.html' %}
+      {% block js %}
+      {% endblock %}
    </body>
 </html>
