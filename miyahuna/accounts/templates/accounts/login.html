@@ -6,7 +6,7 @@
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" type="image/jpg" href="https://marketsnap.herokuapp.com/static/images/logos/favicon.9db422efdd85.png">
+<link rel="shortcut icon" type="image/jpg" href="{% static 'imgs/logoMini.png' %}">
 
 
     <title>Market Snap</title>
@@ -22,9 +22,9 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo d-flex justify-content-center">
-                  <img src="https://www.miyahuna.com.jo/assets/images/logo.png">
+                  <img src="{% static 'imgs/logo.png' %}">
                 </div>
-                <form class="pt-3" action="{% url 'login' %}" method="post">
+                <form class="pt-3 text-right" action="{% url 'login' %}" method="post">
                   {% csrf_token %}
                   {{ form.as_p }}
 

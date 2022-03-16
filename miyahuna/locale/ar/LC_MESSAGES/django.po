@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-16 10:39+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\accounts\forms.py:21
+msgid "Password"
+msgstr "كلمة السر"
+
+#: .\accounts\models.py:48
+msgid "theres already a user that have this phone number!"
+msgstr "هناك بالفعل مستخدم يملك نفس رقم الهاتف"
+
+#: .\accounts\models.py:51
+msgid "Is valid account"
+msgstr "هل الحساب مفعل"
+
+#: .\accounts\models.py:54
+msgid "First name"
+msgstr "الاسم الاول"
+
+#: .\accounts\models.py:55
+msgid "Last name"
+msgstr "الاسم الاخير"
+
+#: .\accounts\models.py:56
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#: .\accounts\models.py:57
+msgid "Address 1"
+msgstr "العنوان 1"
+
+#: .\accounts\models.py:58
+msgid "Address 2"
+msgstr "العنوان 2"
+
+#: .\accounts\templates\accounts\changePassword.html:6 .\templates\nav.html:30
+msgid "change password"
+msgstr "تغير كلمة السر"
+
+#: .\accounts\templates\accounts\changePassword.html:25
+#: .\accounts\templates\accounts\updateProfile.html:25
+#: .\customers\templates\customers\addCustomer.html:23
+#: .\customers\templates\customers\updateCustomer.html:23
+msgid "submit"
+msgstr "حفظ"
+
+#: .\accounts\templates\accounts\updateProfile.html:6 .\templates\nav.html:27
+msgid "edit profile"
+msgstr "تعديل البيانات الشخصيه"
+
+#: .\customers\api\serializers.py:30
+msgid "there's no orders"
+msgstr "لا يوجد طلبات"
+
+#: .\customers\forms.py:10 .\customers\forms.py:33
+#: .\customers\templates\customers\customersList.html:26
+msgid "Price per gallon"
+msgstr "سعر القاروره الواحده"
+
+#: .\customers\models.py:8
+msgid "Price Per Gallon"
+msgstr "سعر القاروره الواحده"
+
+#: .\customers\models.py:9
+msgid "User"
+msgstr "المستخدم"
+
+#: .\customers\templates\customers\addCustomer.html:5
+#: .\customers\templates\customers\updateCustomer.html:5
+msgid "add customer"
+msgstr "اضف مشترك جديد"
+
+#: .\customers\templates\customers\customersList.html:6
+msgid "Customers"
+msgstr "المشتركين"
+
+#: .\customers\templates\customers\customersList.html:23
+msgid "Full name"
+msgstr "الاسم الكامل"
+
+#: .\customers\templates\customers\customersList.html:24
+msgid "Phone number"
+msgstr "رقم الهاتف"
+
+#: .\customers\templates\customers\customersList.html:25
+msgid "Last order date"
+msgstr "تاريخ اخر طلب"
+
+#: .\customers\templates\customers\customersList.html:27
+msgid "actions"
+msgstr "العمليات"
+
+#: .\templates\nav.html:33
+msgid "logout"
+msgstr "تسجيل الخروج"

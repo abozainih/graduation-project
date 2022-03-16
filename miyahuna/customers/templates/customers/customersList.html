@@ -1,0 +1,42 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block cardtitle %}
+    {% translate 'Customers' %}
+{% endblock %}
+{% block css %}
+   <link rel="stylesheet" href="{% static 'css/dataTables.bootstrap4.min.css' %}">
+    <style>
+        .form-group {
+            margin-bottom : 0.3rem;
+         }
+    </style>
+{% endblock %}
+{% block content %}
+
+
+                        <table  id="customersList" data-server-side="false" data-ajax="http://127.0.0.1:8000/customers/api/list/?format=datatables" class="table table-hover dt-responsive nowrap">
+                           <thead>
+                              <tr>
+                                 <th data-data="null"></th>
+                                 <th data-data="customer_name">{% translate "Full name" %}</th>
+                                 <th data-data="customer_PhoneNumber" >{% translate "Phone number" %}</th>
+                                 <th data-data="customer_lastOrderDate">{% translate "Last order date" %}</th>
+                                 <th data-data="price_per_gallon">{% translate "Price per gallon" %}</th>
+                                  <th>{% translate 'actions' %}</th>
+                              </tr>
+                           </thead>
+                        </table>
+{% endblock %}
+{% block js %}
+
+<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'js/dataTableStyle.js' %}"></script>
+<script !src="">
+
+</script>
+
+{% endblock %}
