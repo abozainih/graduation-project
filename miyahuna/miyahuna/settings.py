@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'customers',
     'orders'
+
 ]
 
 MIDDLEWARE = [
@@ -78,10 +79,19 @@ WSGI_APPLICATION = 'miyahuna.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+        }
     }
 }
 
@@ -113,6 +123,7 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
+LANGUAGE_CODE = 'ar'
 
 USE_TZ = True
 
@@ -147,3 +158,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework_datatables.pagination.DatatablesPageNumberPagination',
     'PAGE_SIZE': 50,
 }
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale')
+]
+USE_I18N = True

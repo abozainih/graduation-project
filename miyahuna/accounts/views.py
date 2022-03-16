@@ -1,12 +1,17 @@
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.views import LoginView, LogoutView
+
+from accounts.models import User
 from customers.models import Customer
 from orders.models import Order
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, UpdateView
 from django.urls import reverse,reverse_lazy
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import views as auth_views
 
-from accounts.forms import loginForm
+
+from accounts.forms import loginForm, UpdateProfileForm, ChangePasswordForm
 
 
 class loginView(LoginView):
@@ -32,6 +37,22 @@ class MainPanelView(LoginRequiredMixin,TemplateView):
     redirect_field_name = 'redirect_to'
     extra_context = {
         'CustomersCount': Customer.objects.count(),
-        'OrdersCount': Order.objects.filter(status = 'False').count(),
+        'OrdersCount': Order.objects.filter(status='False').count(),
     }
 
+
+class UpdateProfileView(UpdateView):
+    model = User
+    template_name = 'accounts/updateProfile.html'
+    success_url = reverse_lazy("mainpanel")
+    form_class = UpdateProfileForm
+
+    def get_object(self, query_set=None):
+        return self.request.user
+
+
+class ChangePasswordView(auth_views.PasswordChangeView):
+
+    template_name = 'accounts/changePassword.html'
+    success_url = reverse_lazy('mainprofile')
+    form_class = ChangePasswordForm

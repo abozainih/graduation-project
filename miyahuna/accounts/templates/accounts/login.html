@@ -24,7 +24,7 @@
                 <div class="brand-logo d-flex justify-content-center">
                   <img src="{% static 'imgs/logo.png' %}">
                 </div>
-                <form class="pt-3" action="{% url 'login' %}" method="post">
+                <form class="pt-3 text-right" action="{% url 'login' %}" method="post">
                   {% csrf_token %}
                   {{ form.as_p }}
 

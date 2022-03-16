@@ -1,5 +1,10 @@
+
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
+{% block cardtitle %}
+    {% translate 'Customers' %}
+{% endblock %}
 {% block css %}
    <link rel="stylesheet" href="{% static 'css/dataTables.bootstrap4.min.css' %}">
     <style>
@@ -9,98 +14,20 @@
     </style>
 {% endblock %}
 {% block content %}
-<div class="card">
-                     <div class="card-body">
-                        <div class="d-flex justify-content-between pb-3">
-                           <div>
-                              <h4 class="card-title">المشتركين</h4>
-                           </div>
-                        </div>
+
 
                         <table  id="customersList" data-server-side="false" data-ajax="http://127.0.0.1:8000/customers/api/list/?format=datatables" class="table table-hover dt-responsive nowrap">
                            <thead>
                               <tr>
                                  <th data-data="null"></th>
-                                 <th data-data="customer_name">الاسم</th>
-                                 <th data-data="customer_PhoneNumber" >رقم الهاتف</th>
-                                 <th data-data="customer_lastOrderDate">تاريخ أخر طلب</th>
-                                 <th data-data="price_per_gallon">مجموع المشتريات</th>
+                                 <th data-data="customer_name">{% translate "Full name" %}</th>
+                                 <th data-data="customer_PhoneNumber" >{% translate "Phone number" %}</th>
+                                 <th data-data="customer_lastOrderDate">{% translate "Last order date" %}</th>
+                                 <th data-data="price_per_gallon">{% translate "Price per gallon" %}</th>
+                                  <th>{% translate 'actions' %}</th>
                               </tr>
                            </thead>
                         </table>
-                     </div>
-                  </div>
-<div class="modal fade" id="addCustomer" tabindex="-1" role="dialog" aria-labelledby="addCustomer" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addCustomer">اضافة مشترك جديد</h5>
-        </div>
-        <div class="modal-body">
-            <form action="{% url 'createCust' %}" method="post" class="forms-sample">
-                {% csrf_token %}
-            <div class="form-group row">
-               <label for="firstName" class="col-sm-3 col-form-label">الاسم الاول</label>
-               <div class="col-sm-9">
-               <input type="text" name="user.first_name" class="form-control" id="firstName" placeholder="الاسم الاول">
-               </div>
-            </div>
-            <div class="form-group row">
-               <label for="lastName" class="col-sm-3 col-form-label">الاسم الثاني</label>
-               <div class="col-sm-9">
-               <input type="text" name="user.last_name" class="form-control" id="lastName" placeholder="الاسم الثاني">
-               </div>
-            </div>
-            <div class="form-group row">
-                <label for="username" class="col-sm-3 col-form-label">اسم المستخدم</label>
-                <div class="col-sm-9">
-                <input type="text" name="user.username" class="form-control" id="username" placeholder="اسم المستخدم">
-                </div>
-             </div>
-            <div class="form-group row">
-               <label for="phonenumber" class="col-sm-3 col-form-label">رقم الهاتف</label>
-               <div class="col-sm-9">
-               <input type="text" name="user.phone_number" class="form-control" id="phonenumber" placeholder="رقم الهاتف">
-               </div>
-            </div>
-            <div class="form-group row">
-               <label for="address_1" class="col-sm-3 col-form-label">العنوان 1</label>
-               <div class="col-sm-9">
-               <input type="text" name="user.address1" class="form-control" id="address_1" placeholder="العنوان 1">
-               </div>
-            </div>
-            <div class="form-group row">
-               <label for="address_2" class="col-sm-3 col-form-label">العنوان 2</label>
-               <div class="col-sm-9">
-               <input type="text" name="user.address1" class="form-control" id="address_2" placeholder="العنوان 2">
-               </div>
-            </div>
-            <div class="form-group row">
-               <label for="gallonprice" class="col-sm-3 col-form-label">سعر القاروره</label>
-               <div class="col-sm-9">
-               <input type="number" name="price_per_gallon" class="form-control" id="gallonprice" placeholder="سعر القاروره">
-               </div>
-            </div>
-            <div class="form-group row">
-               <label for="password" class="col-sm-3 col-form-label">كلمة السر</label>
-               <div class="col-sm-9">
-               <input name="user.password" type="password" class="form-control" id="password" placeholder="كلمة السر">
-               </div>
-            </div>
-            <div class="form-group row">
-               <label for="confirmpasswor" class="col-sm-3 col-form-label">اعد كتابة كلمة السر</label>
-               <div class="col-sm-9">
-               <input type="password" class="form-control" id="confirmpassword" placeholder="كلمة السر">
-               </div>
-            </div>
-            <button type="submit" class="btn btn-gradient-primary mr-2">حفظ</button>
-            <button class="btn btn-light"  data-dismiss="modal">الغاء</button>
-         </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
 {% endblock %}
 {% block js %}
 
@@ -108,5 +35,8 @@
 <script src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
 <script src="{% static 'js/dataTables.buttons.min.js' %}"></script>
 <script src="{% static 'js/dataTableStyle.js' %}"></script>
+<script !src="">
+
+</script>
 
 {% endblock %}

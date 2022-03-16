@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+
 {% block cardtitle %}
-    {% translate 'add customer' %}
+    {% translate 'edit profile' %}
 {% endblock %}
 
 {% block content %}
 {% for field in form %}
     {{ field.errors }}
 {% endfor %}
-<form action="{% url 'CreateCustomer' %}" method='post'>
+
+<form action="{% url 'UpdateProfile' %}" method='post'>
     {% csrf_token %}
 
 {% for field in form %}
-<div class="align-items-baseline form-group justify-content-around row ">
+<div class="align-items-baseline form-group justify-content-around flex-nowrap row ">
         {{ field.label_tag }}
             <div class="col-sm-9">
              {{ field }}
@@ -22,8 +24,6 @@
         {% endfor %}
 <input class="btn btn-gradient-primary font-weight-medium auth-form-btn" type="submit" value="{% translate 'submit' %}">
 </form>
-
-
 {% endblock %}
 
 {% block js %}

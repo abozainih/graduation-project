@@ -17,8 +17,18 @@
          {% include "sidebar.html" %}
          <div class="main-panel">
             <div class="content-wrapper">
-               {% block content %}
-               {% endblock %}
+               <div class="card">
+                     <div class="card-body">
+                        <div class="d-flex justify-content-between pb-3">
+                           <div>
+                              <h4 class="card-title">{% block cardtitle %} {% endblock %} </h4>
+                           </div>
+                        </div>
+                           {% block content %}
+                           {% endblock %}
+                     </div>
+               </div>
+
             </div>
             <footer class="footer">
                <div class="d-sm-flex justify-content-center justify-content-sm-between">

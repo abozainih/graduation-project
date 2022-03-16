@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 
 <nav class="d-print-none navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -22,11 +23,14 @@
                      <i class="mdi mdi-arrow-down-drop-circle-outline"></i>
                   </a>
                   <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                     <a class="dropdown-item" href="https://marketsnap.herokuapp.com/accounts/me/">
-                     <i class="mdi mdi-account mr-2 text-primary"></i> الملف الشخصي
+                     <a class="dropdown-item" href="{% url 'UpdateProfile' %}">
+                     <i class="mdi mdi-account mr-2 text-primary"></i>{% translate 'edit profile' %}
+                     </a>
+                     <a class="dropdown-item" href="{% url 'ChangePassword' %}">
+                     <i class="mdi mdi-lock mr-2 text-primary"></i>{% translate 'change password' %}
                      </a>
                      <a class="dropdown-item" href="{% url 'logout' %}">
-                     <i class="mdi mdi-logout mr-2 text-primary"></i> تسجيل الخروج
+                     <i class="mdi mdi-logout mr-2 text-primary"></i> {% translate 'logout' %}
                      </a>
                   </div>
                </li>

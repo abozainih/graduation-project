@@ -12,5 +12,6 @@ from rest_framework import routers
 
 urlpatterns = [
     path('list/', views.CustomerListView.as_view(), name="custlist"),
-    path('create/', views.CustomerCreateView.as_view(), name="createCust"),
+    # path('create/', views.CustomerCreateView.as_view(), name="createCust"),
+    # path('update/<pk>', views.CustomerUpdateView.as_view(), name='updateCust')
     ]

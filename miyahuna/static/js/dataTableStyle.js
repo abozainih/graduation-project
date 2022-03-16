@@ -1,6 +1,23 @@
 $(document).ready(function() {
     var t = $('#customersList').DataTable({
         responsive: true,
+        columns : [
+            null,
+            null,
+            null,
+            null,
+            null,
+            {'data': 'pk', 'render': function(data,type,row,meta){
+
+                return `
+                    <div class="">
+                      <a href="${row.customer_update_link}"> <button class="btn btn-info btn-sm mdi mdi-note-edit">
+                      </button> </a>
+                    </div>
+                    `;
+            }},
+
+        ],
         language: {
             url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/ar.json',
             searchPlaceholder:'ابحث عن مشترك',
@@ -10,18 +27,17 @@ $(document).ready(function() {
             {
                 text: 'اضف مشترك جديد',
                 className:'btn btn-info btn-fw',
-                attr: {
-                    'data-toggle' :'modal',
-                    'data-target' :"#addCustomer"
-                }
+                action: function ( e, dt, button, config ) {
+                    window.location.href = '/customers/create/';
+                },
             }
         ],
 
         order: [[ 1, 'asc' ]],
 
         columnDefs: [
-          { className: "dt-center p-3", targets: "_all" },
-          { "searchable": false,"orderable": false,"targets": 0}
+          { className: "dt-center p-3 dir-ltr" , targets: "_all" },
+          { "searchable": false,"orderable": false,"targets": 0},
          ],
 
          initComplete : function(settings, json) {
@@ -31,6 +47,10 @@ $(document).ready(function() {
 //                $('.dt-button').addClass('btn btn-info btn-fw');
                 $( ".dt-button" ).prepend("<i class='mdi mdi-plus-thick pl-2'></i>");
                 $('#widgits').addClass('align-items-baseline d-flex justify-content-between');
+                $("#create").click(function(){
+                    window.location.href="{% url 'CreateCustomer' %}";
+                });
+
          }
     });
 
