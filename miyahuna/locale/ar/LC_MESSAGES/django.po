@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-16 10:39+0200\n"
+"POT-Creation-Date: 2022-03-16 23:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,33 +22,33 @@ msgstr ""
 msgid "Password"
 msgstr "كلمة السر"
 
-#: .\accounts\models.py:48
+#: .\accounts\models.py:46
 msgid "theres already a user that have this phone number!"
 msgstr "هناك بالفعل مستخدم يملك نفس رقم الهاتف"
 
-#: .\accounts\models.py:51
-msgid "Is valid account"
-msgstr "هل الحساب مفعل"
-
-#: .\accounts\models.py:54
+#: .\accounts\models.py:48
 msgid "First name"
 msgstr "الاسم الاول"
 
-#: .\accounts\models.py:55
+#: .\accounts\models.py:49
 msgid "Last name"
 msgstr "الاسم الاخير"
 
-#: .\accounts\models.py:56
+#: .\accounts\models.py:50
 msgid "Phone Number"
 msgstr "رقم الهاتف"
 
-#: .\accounts\models.py:57
+#: .\accounts\models.py:51
 msgid "Address 1"
 msgstr "العنوان 1"
 
-#: .\accounts\models.py:58
+#: .\accounts\models.py:52
 msgid "Address 2"
 msgstr "العنوان 2"
+
+#: .\accounts\models.py:67
+msgid "Is valid account"
+msgstr "هل الحساب مفعل"
 
 #: .\accounts\templates\accounts\changePassword.html:6 .\templates\nav.html:30
 msgid "change password"
@@ -71,6 +71,7 @@ msgstr "لا يوجد طلبات"
 
 #: .\customers\forms.py:10 .\customers\forms.py:33
 #: .\customers\templates\customers\customersList.html:26
+#: .\employees\templates\employees\employeesList.html:26
 msgid "Price per gallon"
 msgstr "سعر القاروره الواحده"
 
@@ -88,25 +89,71 @@ msgid "add customer"
 msgstr "اضف مشترك جديد"
 
 #: .\customers\templates\customers\customersList.html:6
+#: .\employees\templates\employees\employeesList.html:6
 msgid "Customers"
 msgstr "المشتركين"
 
 #: .\customers\templates\customers\customersList.html:23
+#: .\employees\templates\employees\employeesList.html:23
 msgid "Full name"
 msgstr "الاسم الكامل"
 
 #: .\customers\templates\customers\customersList.html:24
+#: .\employees\templates\employees\employeesList.html:24
 msgid "Phone number"
 msgstr "رقم الهاتف"
 
 #: .\customers\templates\customers\customersList.html:25
+#: .\employees\templates\employees\employeesList.html:25
 msgid "Last order date"
 msgstr "تاريخ اخر طلب"
 
 #: .\customers\templates\customers\customersList.html:27
+#: .\employees\templates\employees\employeesList.html:27
 msgid "actions"
 msgstr "العمليات"
+
+#: .\employees\models.py:10
+msgid "salary per day"
+msgstr "الراتب اليومي"
+
+#: .\employees\models.py:34
+msgid "absence date"
+msgstr "تاريخ الغياب"
+
+#: .\employees\models.py:35
+msgid "is paid ?"
+msgstr "هل الطلب مدفوع"
 
 #: .\templates\nav.html:33
 msgid "logout"
 msgstr "تسجيل الخروج"
+
+#: .\templates\sidebar.html:8
+msgid "main"
+msgstr "الرئيسيه"
+
+#: .\templates\sidebar.html:14
+msgid "employees"
+msgstr "الموظفين"
+
+#: .\templates\sidebar.html:19
+msgid "normal employees"
+msgstr "الموظفين العاديين"
+
+#: .\templates\sidebar.html:20
+msgid "data entry employees"
+msgstr "موظفي ادخال البيانات"
+
+#: .\templates\sidebar.html:26
+#| msgid "Customers"
+msgid "customers"
+msgstr "المشتركين"
+
+#: .\templates\sidebar.html:32
+msgid "orders"
+msgstr "الطلبات"
+
+#: .\templates\sidebar.html:38
+msgid "sales"
+msgstr "المبيعات"

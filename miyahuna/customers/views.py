@@ -9,7 +9,7 @@ from customers.forms import UpdateCustomerForm, CreateCustomerForm
 from customers.models import Customer
 
 
-class CustomersListView(LoginRequiredMixin,TemplateView):
+class CustomersListView(LoginRequiredMixin, TemplateView):
     template_name = "customers/customersList.html"
     login_url = reverse_lazy("login")
     redirect_field_name = 'redirect_to'

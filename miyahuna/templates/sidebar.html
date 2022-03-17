@@ -1,28 +1,36 @@
 {% url 'CustomersList' as customer_list %}
 {% url 'mainpanel' as main %}
+{% url 'EmployeesList' as employees_list %}
+{% load i18n %}
 <nav class="d-print-none sidebar sidebar-offcanvas" id="sidebar">
                <ul class="nav ps ps--active-y py-4">
                   <li class="nav-item {% if request.get_full_path == main %}active{% endif %}">
                      <a class="nav-link " href="{{main}}">
-                     <span class="menu-title">الرئيسيه</span>
+                     <span class="menu-title">{% translate 'main' %}</span>
                      <i class="mdi mdi-home menu-icon"></i>
+                     </a>
+                  </li>
+                  <li class="nav-item {% if 'employees' in request.get_full_path %}active{% endif %}">
+                     <a class="nav-link " href="{{employees_list}}">
+                     <span class="menu-title">{% translate 'employees' %}</span>
+                     <i class="mdi mdi-account-group menu-icon"></i>
                      </a>
                   </li>
                   <li class="nav-item {% if 'customers' in request.get_full_path %}active{% endif %}">
                      <a class="nav-link " href="{{customer_list}}">
-                     <span class="menu-title">المشتركين</span>
+                     <span class="menu-title">{% translate 'customers' %}</span>
                      <i class="mdi mdi-account-group menu-icon"></i>
                      </a>
                   </li>
                   <li class="nav-item ">
                      <a class="nav-link" href="orders.html">
-                     <span class="menu-title">الطلبات</span>
+                     <span class="menu-title">{% translate 'orders' %}</span>
                      <i class="mdi mdi-note-text menu-icon"></i>
                      </a>
                   </li>
                   <li class="nav-item ">
                      <a class="nav-link" href="sales.html">
-                     <span class="menu-title">المبيعات</span>
+                     <span class="menu-title">{% translate 'sales' %}</span>
                      <i class="mdi mdi-cash-multiple menu-icon"></i>
                      </a>
                   </li>

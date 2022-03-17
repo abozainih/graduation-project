@@ -6,7 +6,7 @@ from accounts.models import User
 class Order(models.Model):
 
     num_of_gallon = models.IntegerField(blank=False)
-    madeBy = models.ForeignKey(User,related_name="user_orders",on_delete=models.CASCADE)
+    madeBy = models.ForeignKey(User, related_name="user_orders",on_delete=models.CASCADE)
     order_date = models.DateField(auto_now_add=True)
     is_paid = models.BooleanField()
     status = models.BooleanField(default=False)

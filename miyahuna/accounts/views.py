@@ -35,10 +35,17 @@ class MainPanelView(LoginRequiredMixin,TemplateView):
     template_name = "accounts/admin_panel.html"
     login_url = reverse_lazy("login")
     redirect_field_name = 'redirect_to'
-    extra_context = {
-        'CustomersCount': Customer.objects.count(),
-        'OrdersCount': Order.objects.filter(status='False').count(),
-    }
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        extra_context = {
+            'CustomersCount': Customer.objects.count(),
+            'OrdersCount': Order.objects.filter(status='False').count(),
+        }
+        context.update(extra_context)
+
+        return context
 
 
 class UpdateProfileView(UpdateView):

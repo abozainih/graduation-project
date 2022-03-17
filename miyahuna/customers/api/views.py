@@ -5,33 +5,24 @@ from accounts.models import User
 from .serializers import CustomerSerializer, CustomerUser
 from customers.models import Customer
 from rest_framework import generics, serializers
-from rest_framework.permissions import IsAdminUser
+from . import access
 
 
 class CustomerListView(generics.ListAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [access.IsAdminUser]
 
 
 class CustomerCreateView(generics.CreateAPIView):
     serializer_class = CustomerUser
-    permission_classes = [IsAdminUser]
+    permission_classes = [access.IsAdminUser]
 
     def post(self, *args, **kwargs):
         super().post(*args, **kwargs)
         return redirect('CustomersList')
 
 
-
-
-# class CustomerUpdateView(generics.UpdateAPIView):
-#     serializer_class = CustomerUser
-#     lookup_field = 'pk'
-#
-#     def get_object(self):
-#         pk = self.kwargs["pk"]
-#         return get_object_or_404(Customer, pk=pk)
 
 
 class CustomerUpdateView(generics.RetrieveUpdateAPIView):

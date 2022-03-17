@@ -40,32 +40,34 @@ class UserManager(BaseUserManager):
         return self._create_user(phone_number, password, **extra_fields)
 
 
-class User(AbstractBaseUser, PermissionsMixin):
-
-    USERNAME_FIELD = 'phone_number'
+class BasicData(models.Model):
 
     phone_number_exists = {
         'unique': _("theres already a user that have this phone number!"),
     }
-
-    is_active = models.BooleanField(_('Is valid account'), default=True)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
     first_name = models.CharField(verbose_name=_('First name'), max_length=50)
     last_name = models.CharField(verbose_name=_('Last name'), max_length=50)
     phone_number = PhoneNumberField(unique=True, region="PS", blank=False, null=False, verbose_name=_('Phone Number'), error_messages=phone_number_exists)
     address_1 = models.CharField(max_length=400,verbose_name=_('Address 1'),blank=True)
     address_2 = models.CharField(max_length=400, verbose_name=_('Address 2'), blank=True)
-
-    objects = UserManager()
-
-
+    USERNAME_FIELD = 'phone_number'
 
     def get_full_name(self):
 
         full_name = "%s %s" % (self.first_name, self.last_name)
         return full_name.strip()
-    #
+
+    class Meta:
+        abstract = True
+
+
+class User(BasicData, AbstractBaseUser, PermissionsMixin):
+
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(_('Is valid account'), default=True)
+    is_superuser = models.BooleanField(default=False)
+    objects = UserManager()
+
     def __str__(self):
         return self.get_full_name()
 

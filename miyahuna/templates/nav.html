@@ -15,7 +15,7 @@
                <li class="nav-item nav-profile dropdown bg-light">
                   <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                      <span class="avatar bg-inverse-secondary text-white d-flex align-items-center justify-content-center h3 m-0">
-                     ع
+                     {{ request.user.first_name|slice:"0:1"|upper}}
                      </span>
                      <div class="nav-profile-text ml-1">
                         <p class="mb-1 text-black">{{request.user.get_full_name}}</p>
