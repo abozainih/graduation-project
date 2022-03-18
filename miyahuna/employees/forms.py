@@ -55,3 +55,18 @@ class CreateEmployeeForm(UserCreationForm):
             user.save()
             Employee.objects.create(user=user, salary_per_day=self.cleaned_data["salary_per_day"])
         return user
+
+
+class UpdateEmployeeForm(forms.ModelForm):
+
+    salary_per_day = forms.DecimalField(max_digits=5, decimal_places=2, label=_("salary per day"))
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'phone_number', 'address_1', 'address_2', 'salary_per_day']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'

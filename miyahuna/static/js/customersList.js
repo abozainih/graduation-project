@@ -7,7 +7,7 @@ $(document).ready(function() {
             null,
             null,
             null,
-            {'data': 'pk', 'render': function(data,type,row,meta){
+            {'data': 'customer_update_link', 'render': function(data,type,row,meta){
 
                 return `
                     <div class="">

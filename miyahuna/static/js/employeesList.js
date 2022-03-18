@@ -2,6 +2,23 @@ $(document).ready(function() {
     var t = $('#employeesList').DataTable({
         responsive: true,
 
+        columns : [
+            null,
+            null,
+            null,
+            null,
+            null,
+            {'data': 'employee_update_link', 'render': function(data,type,row,meta){
+
+                return `
+                    <div class="">
+                      <a href="${row.employee_update_link}"><button class="btn btn-info btn-sm mdi mdi-note-edit">
+                      </button> </a>
+                    </div>
+                    `;
+            }},
+
+        ],
         language: {
             url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/ar.json',
             searchPlaceholder:'ابحث عن موظف',

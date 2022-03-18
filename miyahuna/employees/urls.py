@@ -5,7 +5,7 @@ urlpatterns = [
     path('list/', views.EmployeesListView.as_view(), name='EmployeesList'),
     path('create/DataEntry/', views.DataEntryEmployeeCreateView.as_view(), name='CreateDataEntryEmployee'),
     path('create/', views.EmployeeCreateView.as_view(), name='CreateEmployee'),
-#     path('update/<pk>/', views.EmployeeUpdateView.as_view(), name='UpdateEmployee'),
-     path('api/', include(urls)),
+    path('update/<pk>/', views.EmployeeUpdateView.as_view(), name='UpdateEmployee'),
+    path('api/', include(urls)),
 #
 ]

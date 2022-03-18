@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-17 19:01+0200\n"
+"POT-Creation-Date: 2022-03-18 17:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,6 +60,7 @@ msgstr "تغير كلمة السر"
 #: .\customers\templates\customers\updateCustomer.html:23
 #: .\employees\templates\employees\addDataEntryEmployee.html:23
 #: .\employees\templates\employees\addEmployee.html:26
+#: .\employees\templates\employees\updateEmployee.html:23
 msgid "submit"
 msgstr "حفظ"
 
@@ -85,7 +86,6 @@ msgid "User"
 msgstr "المستخدم"
 
 #: .\customers\templates\customers\addCustomer.html:5
-#: .\customers\templates\customers\updateCustomer.html:5
 msgid "add customer"
 msgstr "اضف مشترك جديد"
 
@@ -108,10 +108,18 @@ msgid "Last order date"
 msgstr "تاريخ اخر طلب"
 
 #: .\customers\templates\customers\customersList.html:27
+#: .\employees\templates\employees\employeesList.html:27
 msgid "actions"
 msgstr "العمليات"
 
-#: .\employees\forms.py:10 .\employees\forms.py:34 .\employees\models.py:9
+#: .\customers\templates\customers\updateCustomer.html:5
+#, fuzzy
+#| msgid "add customer"
+msgid "update customer"
+msgstr "اضف مشترك جديد"
+
+#: .\employees\forms.py:10 .\employees\forms.py:34 .\employees\forms.py:62
+#: .\employees\models.py:9
 #: .\employees\templates\employees\employeesList.html:25
 msgid "salary per day"
 msgstr "الراتب اليومي"
@@ -139,6 +147,12 @@ msgstr "الموظفين"
 #: .\employees\templates\employees\employeesList.html:26
 msgid "data entry"
 msgstr "مدخل بيانات"
+
+#: .\employees\templates\employees\updateEmployee.html:5
+#, fuzzy
+#| msgid "add employee"
+msgid "update employee"
+msgstr "اضف موظف"
 
 #: .\templates\nav.html:33
 msgid "logout"

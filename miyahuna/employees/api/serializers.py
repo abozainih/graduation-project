@@ -1,4 +1,5 @@
 import phonenumbers
+from django.urls import reverse
 from rest_framework import serializers
 from django.utils.translation import gettext_lazy as _
 from employees.models import Employee
@@ -8,6 +9,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
     employee_name= serializers.SerializerMethodField()
     employee_PhoneNumber = serializers.SerializerMethodField()
     is_data_entry = serializers.SerializerMethodField()
+    employee_update_link = serializers.SerializerMethodField()
     # employee_allsales = serializers.SerializerMethodField()
 
     def get_employee_name(self, obj):
@@ -20,7 +22,10 @@ class EmployeeSerializer(serializers.ModelSerializer):
     def get_is_data_entry(self, obj):
         return str(obj.user.is_active)
 
+    def get_employee_update_link(self, obj):
+         return reverse('UpdateEmployee', kwargs={'pk': obj.pk})
+
 
     class Meta:
         model = Employee
-        fields = ['employee_name', 'employee_PhoneNumber', 'is_data_entry', 'salary_per_day']
+        fields = ['employee_name', 'employee_PhoneNumber', 'is_data_entry', 'salary_per_day', 'employee_update_link']
