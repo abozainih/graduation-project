@@ -12,6 +12,9 @@ class Employee(models.Model):
     class Meta:
         app_label = 'employees'
 
+    def __str__(self):
+        return self.user.get_full_name()
+
 
 class Absence(models.Model):
 

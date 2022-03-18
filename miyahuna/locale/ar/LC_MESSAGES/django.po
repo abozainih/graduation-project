@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-16 23:09+0200\n"
+"POT-Creation-Date: 2022-03-17 19:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,6 +58,8 @@ msgstr "تغير كلمة السر"
 #: .\accounts\templates\accounts\updateProfile.html:25
 #: .\customers\templates\customers\addCustomer.html:23
 #: .\customers\templates\customers\updateCustomer.html:23
+#: .\employees\templates\employees\addDataEntryEmployee.html:23
+#: .\employees\templates\employees\addEmployee.html:26
 msgid "submit"
 msgstr "حفظ"
 
@@ -71,7 +73,6 @@ msgstr "لا يوجد طلبات"
 
 #: .\customers\forms.py:10 .\customers\forms.py:33
 #: .\customers\templates\customers\customersList.html:26
-#: .\employees\templates\employees\employeesList.html:26
 msgid "Price per gallon"
 msgstr "سعر القاروره الواحده"
 
@@ -89,7 +90,6 @@ msgid "add customer"
 msgstr "اضف مشترك جديد"
 
 #: .\customers\templates\customers\customersList.html:6
-#: .\employees\templates\employees\employeesList.html:6
 msgid "Customers"
 msgstr "المشتركين"
 
@@ -104,56 +104,62 @@ msgid "Phone number"
 msgstr "رقم الهاتف"
 
 #: .\customers\templates\customers\customersList.html:25
-#: .\employees\templates\employees\employeesList.html:25
 msgid "Last order date"
 msgstr "تاريخ اخر طلب"
 
 #: .\customers\templates\customers\customersList.html:27
-#: .\employees\templates\employees\employeesList.html:27
 msgid "actions"
 msgstr "العمليات"
 
-#: .\employees\models.py:10
+#: .\employees\forms.py:10 .\employees\forms.py:34 .\employees\models.py:9
+#: .\employees\templates\employees\employeesList.html:25
 msgid "salary per day"
 msgstr "الراتب اليومي"
 
-#: .\employees\models.py:34
+#: .\employees\models.py:21
 msgid "absence date"
 msgstr "تاريخ الغياب"
 
-#: .\employees\models.py:35
+#: .\employees\models.py:22
 msgid "is paid ?"
-msgstr "هل الطلب مدفوع"
+msgstr "مدفوع"
+
+#: .\employees\templates\employees\addDataEntryEmployee.html:5
+msgid "add data entry employee"
+msgstr "موظفي ادخال البيانات"
+
+#: .\employees\templates\employees\addEmployee.html:5
+msgid "add employee"
+msgstr "اضف موظف"
+
+#: .\employees\templates\employees\employeesList.html:6
+msgid "Employees"
+msgstr "الموظفين"
+
+#: .\employees\templates\employees\employeesList.html:26
+msgid "data entry"
+msgstr "مدخل بيانات"
 
 #: .\templates\nav.html:33
 msgid "logout"
 msgstr "تسجيل الخروج"
 
-#: .\templates\sidebar.html:8
+#: .\templates\sidebar.html:9
 msgid "main"
 msgstr "الرئيسيه"
 
-#: .\templates\sidebar.html:14
+#: .\templates\sidebar.html:15
 msgid "employees"
 msgstr "الموظفين"
 
-#: .\templates\sidebar.html:19
-msgid "normal employees"
-msgstr "الموظفين العاديين"
-
-#: .\templates\sidebar.html:20
-msgid "data entry employees"
-msgstr "موظفي ادخال البيانات"
-
-#: .\templates\sidebar.html:26
-#| msgid "Customers"
+#: .\templates\sidebar.html:21
 msgid "customers"
 msgstr "المشتركين"
 
-#: .\templates\sidebar.html:32
+#: .\templates\sidebar.html:27
 msgid "orders"
 msgstr "الطلبات"
 
-#: .\templates\sidebar.html:38
+#: .\templates\sidebar.html:33
 msgid "sales"
 msgstr "المبيعات"

@@ -12,14 +12,14 @@ $(document).ready(function() {
                 text: 'اضف موظف جديد',
                 className:'btn btn-info btn-fw',
                 action: function ( e, dt, button, config ) {
-                    window.location.href = '/customers/create/';
+                    window.location.href = '/employees/create/';
                 },
             },
                         {
                 text: 'اضف موظف ادخال بيانات',
                 className:'btn btn-info btn-fw',
                 action: function ( e, dt, button, config ) {
-                    window.location.href = '/customers/create/';
+                    window.location.href = '/employees/create/DataEntry/';
                 },
             },
 
