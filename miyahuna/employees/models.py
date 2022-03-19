@@ -24,3 +24,7 @@ class Absence(models.Model):
 
     class Meta:
         app_label = 'employees'
+
+
+    def __str__(self):
+        return self.employee.user.get_full_name()

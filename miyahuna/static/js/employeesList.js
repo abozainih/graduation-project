@@ -8,6 +8,7 @@ $(document).ready(function() {
             null,
             null,
             null,
+            null,
             {'data': 'employee_update_link', 'render': function(data,type,row,meta){
 
                 return `
