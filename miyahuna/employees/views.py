@@ -59,7 +59,7 @@ class EmployeeUpdateView(LoginRequiredMixin, UpdateView):
 
 
 class AbsenceCreateView(LoginRequiredMixin, CreateView):
-    template_name = "employees/test.html"
+    http_method_names = ['post']
     login_url = reverse_lazy("login")
     model = Absence
     fields = ['is_paid']
