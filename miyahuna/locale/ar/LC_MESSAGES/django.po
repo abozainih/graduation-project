@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-20 15:20+0200\n"
+"POT-Creation-Date: 2022-03-20 15:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -165,7 +165,7 @@ msgstr "غيابات الشهر الحالي"
 
 #: .\employees\templates\employees\employeesList.html:39
 msgid "add absence"
-msgstr "تاريخ الغياب"
+msgstr "اضافة غياب"
 
 #: .\employees\templates\employees\employeesList.html:50
 msgid "close"
@@ -173,7 +173,7 @@ msgstr "الغاء"
 
 #: .\employees\templates\employees\updateEmployee.html:5
 msgid "update employee"
-msgstr "اضف موظف"
+msgstr "تعديل بيانات موظف"
 
 #: .\templates\nav.html:33
 msgid "logout"
