@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-19 11:46+0200\n"
+"POT-Creation-Date: 2022-03-20 13:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,6 +60,8 @@ msgstr "تغير كلمة السر"
 #: .\customers\templates\customers\updateCustomer.html:23
 #: .\employees\templates\employees\addDataEntryEmployee.html:23
 #: .\employees\templates\employees\addEmployee.html:26
+#: .\employees\templates\employees\employeesList.html:50
+#: .\employees\templates\employees\test.html:26
 #: .\employees\templates\employees\updateEmployee.html:23
 msgid "submit"
 msgstr "حفظ"
@@ -137,6 +139,7 @@ msgid "add data entry employee"
 msgstr "موظفي ادخال البيانات"
 
 #: .\employees\templates\employees\addEmployee.html:5
+#: .\employees\templates\employees\test.html:5
 msgid "add employee"
 msgstr "اضف موظف"
 
@@ -151,6 +154,22 @@ msgstr "مدخل بيانات"
 #: .\employees\templates\employees\employeesList.html:27
 msgid "absence for this month"
 msgstr "غيابات الشهر الحالي"
+
+#: .\employees\templates\employees\employeesList.html:39
+#, fuzzy
+#| msgid "absence date"
+msgid "add absence"
+msgstr "تاريخ الغياب"
+
+#: .\employees\templates\employees\employeesList.html:45
+
+#| msgid "is paid ?"
+msgid "is paid"
+msgstr "مدفوع"
+
+#: .\employees\templates\employees\employeesList.html:51
+msgid "close"
+msgstr "الغاء"
 
 #: .\employees\templates\employees\updateEmployee.html:5
 #, fuzzy

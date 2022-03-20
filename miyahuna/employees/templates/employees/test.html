@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block cardtitle %}
+    {% translate 'add employee' %}
+{% endblock %}
+
+{% block content %}
+{% for field in form %}
+{% if field.errors %}
+{{ field.errors }} {{ field.name }}
+{%endif%}
+{% endfor %}
+<form action="{% url 'CreateAbsence' 1 %}" method='post'>
+    {% csrf_token %}
+
+{% for field in form.visible_fields %}
+    <div class="align-items-baseline form-group justify-content-around row ">
+        {{ field.label_tag }}
+            <div class="col-sm-9">
+             {{ field }}
+             </div>
+    </div>
+
+        {% endfor %}
+<input class="btn btn-gradient-primary font-weight-medium auth-form-btn" type="submit" value="{% translate 'submit' %}">
+</form>
+
+
+{% endblock %}
+
+{% block js %}
+<script>
+        $(document).ready(function(){
+            $(".card").addClass("col-6");
+        });
+</script>
+{% endblock %}

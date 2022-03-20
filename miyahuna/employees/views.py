@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, UpdateView
 from accounts.models import User
 from employees.forms import CreateDataEntryEmployeeForm, CreateEmployeeForm, UpdateEmployeeForm
-from employees.models import Employee
+from employees.models import Employee, Absence
 
 
 class EmployeesListView(LoginRequiredMixin, TemplateView):
@@ -56,3 +56,23 @@ class EmployeeUpdateView(LoginRequiredMixin, UpdateView):
         form.instance.save()
         employee.save()
         return response
+
+
+class AbsenceCreateView(LoginRequiredMixin, CreateView):
+    template_name = "employees/test.html"
+    login_url = reverse_lazy("login")
+    model = Absence
+    fields = ['is_paid']
+    success_url = reverse_lazy("EmployeesList")
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+
+        if form.is_valid():
+            form.instance.employee = Employee.objects.get(pk=self.kwargs['pk'])
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+
+

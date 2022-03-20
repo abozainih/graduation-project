@@ -12,8 +12,11 @@ $(document).ready(function() {
             {'data': 'employee_update_link', 'render': function(data,type,row,meta){
 
                 return `
-                    <div class="">
-                      <a href="${row.employee_update_link}"><button class="btn btn-info btn-sm mdi mdi-note-edit">
+                    <div>
+                    <a data-tool="tooltip" data-placement="top" title="اظهار سجلات غياب الموظف" href="${row.employee_update_link}"><button class="btn btn-dark btn-sm mdi mdi-history">
+                      </button> </a>
+                    <button data-toggle="modal" data-target="#addAbsence" data-tool="tooltip" data-placement="top" title="اضف غياب" data-url="${row.add_absence_url}" class="addAbsence btn btn-sm btn-success mdi mdi-plus-thick"></button>
+                      <a data-tool="tooltip" data-placement="top" title="تعديل بيانات الموظف" href="${row.employee_update_link}"><button class="btn btn-info btn-sm mdi mdi-note-edit">
                       </button> </a>
                     </div>
                     `;
@@ -59,6 +62,10 @@ $(document).ready(function() {
 //                $('.dt-button').addClass('btn btn-info btn-fw');
                 $( ".dt-button" ).prepend("<i class='mdi mdi-plus-thick pl-2'></i>");
                 $('#widgits').addClass('align-items-baseline d-flex justify-content-between');
+                $('[data-tool="tooltip"]').tooltip({ trigger :'hover' });
+                $('.addAbsence').click(function(){
+                     $(".forms-sample").attr("action", $(this).attr('data-url'));
+                })
 //                $("#create").click(function(){
 //                    window.location.href="{% url 'CreateCustomer' %}";
 //                });

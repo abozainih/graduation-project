@@ -29,6 +29,31 @@
                               </tr>
                            </thead>
                         </table>
+
+
+
+<div class="modal fade" id="addAbsence" tabindex="-1" role="dialog" aria-labelledby="addAbsence" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addAbsence">{% translate 'add absence' %}</h5>
+        </div>
+        <div class="modal-body">
+            <form action="#" method="post" class="forms-sample">
+                {% csrf_token %}
+            <div class="form-group row align-items-center">
+               <label class="col-sm-3 col-form-label">{% translate 'is paid' %}</label>
+               <input type="checkbox" style="transform:scale(2);" name="is_paid">
+            </div>
+            <div class="modal-footer">
+          <button type="submit" class="btn btn-gradient-primary mr-2">{% translate 'submit' %}</button>
+          <button class="btn btn-light"  data-dismiss="modal">{% translate 'close' %}</button>
+            </div>
+         </form>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 {% block js %}a
 
@@ -36,5 +61,10 @@
 <script src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
 <script src="{% static 'js/dataTables.buttons.min.js' %}"></script>
 <script src="{% static 'js/employeesList.js' %}"></script>
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 
 {% endblock %}
