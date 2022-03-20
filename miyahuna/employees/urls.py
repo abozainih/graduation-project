@@ -7,6 +7,7 @@ urlpatterns = [
     path('create/', views.EmployeeCreateView.as_view(), name='CreateEmployee'),
     path('create/Absence/<pk>', views.AbsenceCreateView.as_view(), name='CreateAbsence'),
     path('update/<pk>/', views.EmployeeUpdateView.as_view(), name='UpdateEmployee'),
+    path('Absence/<pk>/', views.AbsenceListView.as_view(), name='AbsenceList'),
     path('api/', include(urls)),
 #
 ]

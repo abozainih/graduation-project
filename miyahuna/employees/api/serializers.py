@@ -13,6 +13,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
     employee_update_link = serializers.SerializerMethodField()
     absences_count = serializers.SerializerMethodField()
     add_absence_url = serializers.SerializerMethodField()
+    absence_url = serializers.SerializerMethodField()
 
     def get_employee_name(self, obj):
         return obj.user.get_full_name()
@@ -34,7 +35,17 @@ class EmployeeSerializer(serializers.ModelSerializer):
     def get_add_absence_url(self, obj):
         return reverse('CreateAbsence', kwargs={'pk': obj.pk})
 
+    def get_absence_url(self, obj):
+        return reverse('AbsenceList', kwargs={'pk':obj.pk})
+
 
     class Meta:
         model = Employee
-        fields = ['employee_name', 'employee_PhoneNumber', 'is_data_entry', 'salary_per_day', 'employee_update_link', 'absences_count', 'add_absence_url']
+        fields = ['employee_name', 'employee_PhoneNumber', 'is_data_entry', 'salary_per_day', 'employee_update_link', 'absences_count', 'add_absence_url', 'absence_url']
+
+
+class AbsenceSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model= Absence
+        fields = ["ab_date", 'is_paid']

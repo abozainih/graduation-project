@@ -75,4 +75,16 @@ class AbsenceCreateView(LoginRequiredMixin, CreateView):
             return self.form_invalid(form)
 
 
+class AbsenceListView(LoginRequiredMixin, TemplateView):
+    template_name = "absences/absencesList.html"
+    login_url = reverse_lazy("login")
+    redirect_field_name = 'redirect_to'
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({"employee":Employee.objects.get(pk=self.kwargs['pk'])})
+        return context
+
+
 

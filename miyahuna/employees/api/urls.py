@@ -12,4 +12,5 @@ from rest_framework import routers
 
 urlpatterns = [
     path('list/', views.EmployeesListView.as_view(), name="employeelistapi"),
+    path('list/Absence/<pk>', views.AbsenceListView.as_view(), name="absencelistapi"),
 ]

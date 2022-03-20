@@ -13,7 +13,7 @@ $(document).ready(function() {
 
                 return `
                     <div>
-                    <a data-tool="tooltip" data-placement="top" title="اظهار سجلات غياب الموظف" href="${row.employee_update_link}"><button class="btn btn-dark btn-sm mdi mdi-history">
+                    <a data-tool="tooltip" data-placement="top" title="اظهار سجلات غياب الموظف" href="${row.absence_url}"><button class="btn btn-dark btn-sm mdi mdi-history">
                       </button> </a>
                     <button data-toggle="modal" data-target="#addAbsence" data-tool="tooltip" data-placement="top" title="اضف غياب" data-url="${row.add_absence_url}" class="addAbsence btn btn-sm btn-success mdi mdi-plus-thick"></button>
                       <a data-tool="tooltip" data-placement="top" title="تعديل بيانات الموظف" href="${row.employee_update_link}"><button class="btn btn-info btn-sm mdi mdi-note-edit">
