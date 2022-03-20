@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load static %}
 {% block cardtitle %}
-    {{ employee.user.get_full_name }} {% translate 'absences' %}
+    {% translate 'absences history' %} : {{ employee.user.get_full_name }}
 {% endblock %}
 {% block css %}
    <link rel="stylesheet" href="{% static 'css/dataTables.bootstrap4.min.css' %}">
