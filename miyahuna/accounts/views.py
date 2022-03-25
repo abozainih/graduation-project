@@ -41,7 +41,7 @@ class MainPanelView(LoginRequiredMixin,TemplateView):
         context = super().get_context_data(**kwargs)
         extra_context = {
             'CustomersCount': Customer.objects.count(),
-            'OrdersCount': Order.objects.filter(status='False').count(),
+            'OrdersCount': Order.objects.filter(order_status=0).count(),
         }
         context.update(extra_context)
 

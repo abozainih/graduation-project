@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block cardtitle %}
+    {% translate 'pending orders' %}
+{% endblock %}
+{% block css %}
+   <link rel="stylesheet" href="{% static 'css/dataTables.bootstrap4.min.css' %}">
+    <style>
+        .form-group {
+            margin-bottom : 0.3rem;
+         }
+    </style>
+{% endblock %}
+{% block content %}
+
+
+                        <table  id="ordersList" data-server-side="false" data-ajax="http://127.0.0.1:8000/orders/api/list/?format=datatables" class="table table-hover dt-responsive nowrap">
+                           <thead>
+                              <tr>
+                                 <th data-data="null"></th>
+                                 <th data-data="order_customer_name">{% translate "Full name" %}</th>
+                                 <th data-data="order_customer_phonenumber" >{% translate "Phone number" %}</th>
+                                 <th data-data="num_of_gallon">{% translate "number of gallons" %}</th>
+                                 <th data-data="order_status">{% translate "order status" %}</th>
+                                  <th data-data="is_paid">{% translate "is paid" %}</th>
+                                  <th data-data="order_date">{% translate "order date" %}</th>
+                                  <th>{% translate 'actions' %}</th>
+
+                              </tr>
+                           </thead>
+                        </table>
+
+
+{% endblock %}
+{% block js %}a
+
+<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'js/ordersList.js' %}"></script>
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+{% endblock %}

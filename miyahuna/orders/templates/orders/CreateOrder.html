@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block cardtitle %}
+    {% translate 'create order' %}
+{% endblock %}
+
+      {% block css %}
+<link rel="stylesheet" href="{% static 'css/easy-autocomplete.min.css' %}">
+<style>
+.easy-autocomplete-container ul{
+padding :0;
+}
+
+</style>
+      {% endblock %}
+
+{% block content %}
+{% for field in form %}
+    {{ field.errors }}
+{% endfor %}
+<form action="{% url 'CreateOrder' %}" method='post'>
+    {% csrf_token %}
+
+{% for field in form %}
+<div class="align-items-baseline form-group justify-content-around flex-nowrap row ">
+        {{ field.label_tag }}
+            <div class="col-sm-9">
+             {{ field }}
+             </div>
+    </div>
+        {% endfor %}
+<input class="btn btn-gradient-primary font-weight-medium auth-form-btn" type="submit" value="{% translate 'submit' %}">
+</form>
+
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/jquery.easy-autocomplete.min.js' %}"></script>
+<script>
+        $(document).ready(function(){
+            $(".card").addClass("col-6");
+
+                        var options = {
+               url: function(phrase) {
+                  return "http://127.0.0.1:8000/customers/api/search/?data=" + phrase + "&format=json";
+               },
+               listLocation: "results",
+               getValue: function(element){
+                  return element.customer_name
+               },
+                	list: {
+
+                 onSelectItemEvent: function() {
+                     var value = $("#id_customer_name").getSelectedItemData().customer_PhoneNumber.replaceAll(/\s/g,'');
+
+                     $("#id_phone_number").val(value).trigger("change");
+                 }
+
+            },
+            };
+            $("#id_customer_name").easyAutocomplete(options);
+        });
+
+
+</script>
+{% endblock %}

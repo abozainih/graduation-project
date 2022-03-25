@@ -1,3 +1,5 @@
+from django.db.models import Value
+from django.db.models.functions import Concat
 from django.shortcuts import redirect, get_object_or_404
 from rest_framework.response import Response
 
@@ -22,6 +24,13 @@ class CustomerCreateView(generics.CreateAPIView):
         super().post(*args, **kwargs)
         return redirect('CustomersList')
 
+
+class CustomerFilterView(generics.ListAPIView):
+    serializer_class = CustomerSerializer
+
+    def get_queryset(self):
+        query = Customer.objects.annotate(fullname=Concat('user__first_name', Value(' '), 'user__last_name'))
+        return query.filter(fullname__icontains=self.request.GET['data'])
 
 
 

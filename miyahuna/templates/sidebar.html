@@ -1,6 +1,7 @@
 {% url 'CustomersList' as customer_list %}
 {% url 'mainpanel' as main %}
 {% url 'EmployeesList' as employees_list %}
+{% url 'OrderList' as orders_list %}
 {% load i18n %}
 <nav class="d-print-none sidebar sidebar-offcanvas" id="sidebar">
                <ul class="nav ps ps--active-y py-4">
@@ -22,8 +23,8 @@
                      <i class="mdi mdi-account-group menu-icon"></i>
                      </a>
                   </li>
-                  <li class="nav-item ">
-                     <a class="nav-link" href="orders.html">
+                  <li class="nav-item {% if 'orders' in request.get_full_path %}active{% endif %}">
+                     <a class="nav-link" href="{{orders_list}}">
                      <span class="menu-title">{% translate 'orders' %}</span>
                      <i class="mdi mdi-note-text menu-icon"></i>
                      </a>

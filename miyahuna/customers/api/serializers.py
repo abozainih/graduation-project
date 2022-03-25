@@ -24,8 +24,8 @@ class CustomerSerializer(serializers.ModelSerializer):
 
     def get_customer_lastOrderDate(self,obj):
 
-        if Order.objects.filter(madeBy=obj.user).exists():
-            return Order.objects.filter(madeBy=obj.user).latest('order_date').order_date
+        if Order.objects.filter(made_for=obj.user).exists():
+            return Order.objects.filter(made_for=obj.user).latest('order_date').order_date
         else:
             return _("there's no orders")
 
