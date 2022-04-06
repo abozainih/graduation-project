@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
                <div class="page-header"></div>
@@ -7,10 +8,10 @@
                      <div class="card bg-gradient-danger card-img-holder text-white">
                         <div class="card-body">
                            <img src="https://www.bootstrapdash.com/demo/purple/jquery/template/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
-                           <h4 class="font-weight-normal mb-3 col-6">المبيعات <i class="mdi mdi-chart-line mdi-24px float-right pl-2"></i>
+                           <h4 class="font-weight-normal mb-3 col-6">{% translate 'sales' %} <i class="mdi mdi-chart-line mdi-24px float-right pl-2"></i>
                            </h4>
                            <h2 class="mb-5"> <i class="mdi mdi-currency-ils"></i> 2500</h2>
-                           <p>اختر التاريخ:</p>
+                           <p>{% translate 'choose a date' %} :</p>
                            <div class=' position-relative text-white' id="reportrange" style=" cursor: pointer;">
                               <div class="border p-1 d-inline-block">
                                  <i class="mdi mdi-calendar"></i>&nbsp;
@@ -24,9 +25,17 @@
                      <div class="card bg-gradient-info card-img-holder text-white">
                         <div class="card-body">
                            <img src="https://www.bootstrapdash.com/demo/purple/jquery/template/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
-                           <h4 class="font-weight-normal mb-3">طلبات قيد الانتظار <i class="float-right mdi mdi-24px mdi-note-text pl-2"></i>
+                           <h4 class="font-weight-normal mb-3">{% translate 'pending orders' %}<i class="float-right mdi mdi-24px mdi-note-text pl-2"></i>
                            </h4>
-                           <h2 class="mb-5">{{OrdersCount}} طلب</h2>
+                           <h2 class="mb-5">
+                              {% if OrdersCount > 2 %}
+                                 {{OrdersCount}} {% translate 'orders' %}
+                              {% elif OrdersCount == 0 %}
+                                 {% translate 'theres no pending orders' %}
+                              {% else %}
+                                 {{OrdersCount}} {% translate 'order' %}
+                              {% endif %}
+                           </h2>
                         </div>
                      </div>
                   </div>
@@ -34,9 +43,9 @@
                      <div class="card bg-gradient-success card-img-holder text-white">
                         <div class="card-body">
                            <img src="https://www.bootstrapdash.com/demo/purple/jquery/template/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
-                           <h4 class="font-weight-normal mb-3">عدد الزبائن <i class="float-right mdi mdi-24px mdi-account-group pl-2"></i>
+                           <h4 class="font-weight-normal mb-3">{% translate 'customers count' %} <i class="float-right mdi mdi-24px mdi-account-group pl-2"></i>
                            </h4>
-                           <h2 class="mb-5">{{CustomersCount}} زبون</h2>
+                           <h2 class="mb-5">{{CustomersCount}} {% translate 'customer' %}</h2>
                         </div>
                      </div>
                   </div>

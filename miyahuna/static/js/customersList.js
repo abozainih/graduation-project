@@ -7,11 +7,19 @@ $(document).ready(function() {
             null,
             null,
             null,
+            {'data': 'customer_allsales', 'render': function(data,type,row,meta){
+
+                return data + "<i class='mdi mdi-currency-ils px-1'> </i>"
+            }
+            },
+            null,
             {'data': 'customer_update_link', 'render': function(data,type,row,meta){
 
                 return `
                     <div class="">
-                      <a href="${row.customer_update_link}"> <button class="btn btn-info btn-sm mdi mdi-note-edit">
+                      <a href="${row.customer_orders_url}"> <button class="btn btn-dark btn-sm mdi mdi-history">
+                      </button> </a>
+                      <a href="${row.customer_update_link}"> <button class="btn btn-info btn-sm mdi mdi-account-edit">
                       </button> </a>
                     </div>
                     `;

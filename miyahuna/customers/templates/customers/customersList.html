@@ -16,14 +16,16 @@
 {% block content %}
 
 
-                        <table  id="customersList" data-server-side="false" data-ajax="http://127.0.0.1:8000/customers/api/list/?format=datatables" class="table table-hover dt-responsive nowrap">
+                        <table  id="customersList" data-server-side="false" data-ajax="{% url 'CustomersListApi' %}?format=datatables" class="table table-hover dt-responsive nowrap">
                            <thead>
                               <tr>
                                  <th data-data="null"></th>
                                  <th data-data="customer_name">{% translate "Full name" %}</th>
                                  <th data-data="customer_PhoneNumber" >{% translate "Phone number" %}</th>
-                                 <th data-data="customer_lastOrderDate">{% translate "Last order date" %}</th>
                                  <th data-data="price_per_gallon">{% translate "Price per gallon" %}</th>
+                                  <th data-data="customer_accepted_orders_count">{% translate "accepted orders count" %}</th>
+                                  <th data-data="null">{% translate "customer all sales" %}</th>
+                                 <th data-data="customer_lastOrderDate">{% translate "Last order date" %}</th>
                                   <th>{% translate 'actions' %}</th>
                               </tr>
                            </thead>

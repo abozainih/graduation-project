@@ -7,7 +7,14 @@ $(document).ready(function() {
             null,
             null,
             null,
-            null,
+            {'data': 'is_data_entry', 'render': function(data,type,row,meta){
+
+                if(data == "True")
+                    return "<i class='mdi mdi-check-bold badge badge-success'></i>"
+                else
+                    return "<i class='mdi mdi-close-thick badge badge-danger'></i>"
+
+            }},
             null,
             {'data': 'employee_update_link', 'render': function(data,type,row,meta){
 

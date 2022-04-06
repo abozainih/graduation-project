@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-25 15:36+0300\n"
+"POT-Creation-Date: 2022-04-06 14:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,6 +50,43 @@ msgstr "العنوان 2"
 msgid "Is valid account"
 msgstr "هل الحساب مفعل"
 
+#: .\accounts\templates\accounts\admin_panel.html:11
+#: .\templates\sidebar.html:34
+msgid "sales"
+msgstr "المبيعات"
+
+#: .\accounts\templates\accounts\admin_panel.html:14
+msgid "choose a date"
+msgstr "اختر تاريخ"
+
+#: .\accounts\templates\accounts\admin_panel.html:28
+#: .\orders\templates\orders\ordersList.html:6
+msgid "pending orders"
+msgstr "طلبات قيد الانتظار"
+
+#: .\accounts\templates\accounts\admin_panel.html:32
+#: .\templates\sidebar.html:28
+msgid "orders"
+msgstr "الطلبات"
+
+#: .\accounts\templates\accounts\admin_panel.html:34
+#, fuzzy
+#| msgid "there's no orders"
+msgid "theres no pending orders"
+msgstr "لا يوجد طلبات قيد الانتظار"
+
+#: .\accounts\templates\accounts\admin_panel.html:36
+msgid "order"
+msgstr "طلب"
+
+#: .\accounts\templates\accounts\admin_panel.html:46
+msgid "customers count"
+msgstr "عدد المشتركين"
+
+#: .\accounts\templates\accounts\admin_panel.html:48
+msgid "customer"
+msgstr "مشترك"
+
 #: .\accounts\templates\accounts\changePassword.html:6 .\templates\nav.html:30
 msgid "change password"
 msgstr "تغير كلمة السر"
@@ -60,9 +97,11 @@ msgstr "تغير كلمة السر"
 #: .\customers\templates\customers\updateCustomer.html:23
 #: .\employees\templates\employees\addDataEntryEmployee.html:23
 #: .\employees\templates\employees\addEmployee.html:26
-#: .\employees\templates\employees\employeesList.html:49
+#: .\employees\templates\employees\employeesList.html:53
 #: .\employees\templates\employees\updateEmployee.html:23
 #: .\orders\templates\orders\CreateOrder.html:33
+#: .\orders\templates\orders\ordersList.html:48
+#: .\orders\templates\orders\ordersList.html:70
 msgid "submit"
 msgstr "حفظ"
 
@@ -70,12 +109,12 @@ msgstr "حفظ"
 msgid "edit profile"
 msgstr "تعديل البيانات الشخصيه"
 
-#: .\customers\api\serializers.py:30
+#: .\customers\api\serializers.py:33
 msgid "there's no orders"
 msgstr "لا يوجد طلبات"
 
 #: .\customers\forms.py:10 .\customers\forms.py:33
-#: .\customers\templates\customers\customersList.html:26
+#: .\customers\templates\customers\customersList.html:25
 msgid "Price per gallon"
 msgstr "سعر القاروره الواحده"
 
@@ -96,36 +135,45 @@ msgid "Customers"
 msgstr "المشتركين"
 
 #: .\customers\templates\customers\customersList.html:23
-#: .\employees\templates\employees\employeesList.html:23
+#: .\employees\templates\employees\employeesList.html:27
+#: .\orders\templates\orders\orderHistory.html:23
 #: .\orders\templates\orders\ordersList.html:23
 msgid "Full name"
 msgstr "الاسم الكامل"
 
 #: .\customers\templates\customers\customersList.html:24
-#: .\employees\templates\employees\employeesList.html:24
+#: .\employees\templates\employees\employeesList.html:28
+#: .\orders\templates\orders\orderHistory.html:24
 #: .\orders\templates\orders\ordersList.html:24
 msgid "Phone number"
 msgstr "رقم الهاتف"
 
-#: .\customers\templates\customers\customersList.html:25
+#: .\customers\templates\customers\customersList.html:26
+msgid "accepted orders count"
+msgstr "عدد الطلبات التي تمت"
+
+#: .\customers\templates\customers\customersList.html:27
+msgid "customer all sales"
+msgstr "مجموع مبيعات الزبون"
+
+#: .\customers\templates\customers\customersList.html:28
 msgid "Last order date"
 msgstr "تاريخ اخر طلب"
 
-#: .\customers\templates\customers\customersList.html:27
-#: .\employees\templates\employees\employeesList.html:28
+#: .\customers\templates\customers\customersList.html:29
+#: .\employees\templates\employees\employeesList.html:32
 #: .\orders\templates\orders\ordersList.html:29
 msgid "actions"
 msgstr "العمليات"
 
 #: .\customers\templates\customers\updateCustomer.html:5
-#, fuzzy
-#| msgid "add customer"
+
 msgid "update customer"
-msgstr "اضف مشترك جديد"
+msgstr "تحديث بيانات مشترك"
 
 #: .\employees\forms.py:10 .\employees\forms.py:34 .\employees\forms.py:62
 #: .\employees\models.py:9
-#: .\employees\templates\employees\employeesList.html:25
+#: .\employees\templates\employees\employeesList.html:29
 msgid "salary per day"
 msgstr "الراتب اليومي"
 
@@ -143,8 +191,7 @@ msgid "absences history"
 msgstr "سجل الغيابات"
 
 #: .\employees\templates\absences\absencesList.html:24
-#: .\employees\templates\employees\employeesList.html:45 .\orders\models.py:20
-#: .\orders\templates\orders\ordersList.html:27
+#: .\employees\templates\employees\employeesList.html:49
 msgid "is paid"
 msgstr "مدفوع"
 
@@ -160,19 +207,21 @@ msgstr "اضف موظف"
 msgid "Employees"
 msgstr "الموظفين"
 
-#: .\employees\templates\employees\employeesList.html:26
+#: .\employees\templates\employees\employeesList.html:30
 msgid "data entry"
 msgstr "مدخل بيانات"
 
-#: .\employees\templates\employees\employeesList.html:27
+#: .\employees\templates\employees\employeesList.html:31
 msgid "absence for this month"
 msgstr "غيابات الشهر الحالي"
 
-#: .\employees\templates\employees\employeesList.html:39
+#: .\employees\templates\employees\employeesList.html:43
 msgid "add absence"
 msgstr "اضافة غياب"
 
-#: .\employees\templates\employees\employeesList.html:50
+#: .\employees\templates\employees\employeesList.html:54
+#: .\orders\templates\orders\ordersList.html:49
+#: .\orders\templates\orders\ordersList.html:71
 msgid "close"
 msgstr "الغاء"
 
@@ -181,12 +230,10 @@ msgid "update employee"
 msgstr "تعديل بيانات موظف"
 
 #: .\orders\forms.py:11
-
 msgid "customer name"
 msgstr "اسم المشترك"
 
 #: .\orders\forms.py:12
-#| msgid "Phone number"
 msgid "phone number"
 msgstr "رقم الهاتف"
 
@@ -202,17 +249,24 @@ msgstr "تم"
 msgid "rejected"
 msgstr "مرفوض"
 
-#: .\orders\models.py:17 .\orders\templates\orders\ordersList.html:25
+#: .\orders\models.py:17
+#: .\orders\templates\orders\customerOrderHistory.html:24
+#: .\orders\templates\orders\orderHistory.html:25
+#: .\orders\templates\orders\ordersList.html:25
 msgid "number of gallons"
 msgstr "عدد القوارير"
 
-#: .\orders\models.py:19 .\orders\templates\orders\ordersList.html:28
-
+#: .\orders\models.py:19
+#: .\orders\templates\orders\customerOrderHistory.html:23
+#: .\orders\templates\orders\orderHistory.html:28
+#: .\orders\templates\orders\ordersList.html:28
 msgid "order date"
 msgstr "تاريخ طلب"
 
-#: .\orders\models.py:21 .\orders\templates\orders\ordersList.html:26
-
+#: .\orders\models.py:20
+#: .\orders\templates\orders\customerOrderHistory.html:25
+#: .\orders\templates\orders\orderHistory.html:26
+#: .\orders\templates\orders\ordersList.html:26
 msgid "order status"
 msgstr "حالة الطلب"
 
@@ -220,10 +274,32 @@ msgstr "حالة الطلب"
 msgid "create order"
 msgstr "انشاء طلب جديد"
 
-#: .\orders\templates\orders\ordersList.html:6
+#: .\orders\templates\orders\customerOrderHistory.html:6
+#: .\orders\templates\orders\orderHistory.html:6
+msgid "orders history"
+msgstr "سجل الطلبات"
 
-msgid "pending orders"
-msgstr "طلبات قيد الانتظار"
+#: .\orders\templates\orders\customerOrderHistory.html:26
+#: .\orders\templates\orders\orderHistory.html:27
+#: .\orders\templates\orders\ordersList.html:27
+msgid "total price"
+msgstr "المبلغ الكلي"
+
+#: .\orders\templates\orders\ordersList.html:39
+msgid "accept order"
+msgstr "الموافقه على الطلب"
+
+#: .\orders\templates\orders\ordersList.html:45
+msgid "are you sure accepting this order"
+msgstr "هل انت متأكد من الموافقه على هذا الطلب"
+
+#: .\orders\templates\orders\ordersList.html:61
+msgid "reject order"
+msgstr "رفض الطلب"
+
+#: .\orders\templates\orders\ordersList.html:67
+msgid "are you sure rejecting this order"
+msgstr "هل انت متأكد من رفض هذا الطلب"
 
 #: .\templates\nav.html:33
 msgid "logout"
@@ -240,11 +316,3 @@ msgstr "الموظفين"
 #: .\templates\sidebar.html:22
 msgid "customers"
 msgstr "المشتركين"
-
-#: .\templates\sidebar.html:28
-msgid "orders"
-msgstr "الطلبات"
-
-#: .\templates\sidebar.html:34
-msgid "sales"
-msgstr "المبيعات"

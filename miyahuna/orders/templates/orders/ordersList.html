@@ -23,8 +23,8 @@
                                  <th data-data="order_customer_name">{% translate "Full name" %}</th>
                                  <th data-data="order_customer_phonenumber" >{% translate "Phone number" %}</th>
                                  <th data-data="num_of_gallon">{% translate "number of gallons" %}</th>
-                                 <th data-data="order_status">{% translate "order status" %}</th>
-                                  <th data-data="is_paid">{% translate "is paid" %}</th>
+                                 <th data-data="order_status_name">{% translate "order status" %}</th>
+                                  <th data-data="order_total_price">{% translate "total price" %}</th>
                                   <th data-data="order_date">{% translate "order date" %}</th>
                                   <th>{% translate 'actions' %}</th>
 
@@ -32,6 +32,49 @@
                            </thead>
                         </table>
 
+<div class="modal fade" id="acceptOrder" tabindex="-1" role="dialog" aria-labelledby="acceptOrder" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="acceptOrder">{% translate 'accept order'  %}</h5>
+        </div>
+        <div class="modal-body">
+            <form action="#" method="post" class="forms-sample">
+                {% csrf_token %}
+            <div class="form-group row align-items-center">
+                <p class="col-sm-8">{% translate 'are you sure accepting this order'  %} ?</p>
+            </div>
+            <div class="modal-footer">
+          <button type="submit" class="btn btn-gradient-primary mr-2">{% translate 'submit' %}</button>
+          <button class="btn btn-light"  data-dismiss="modal">{% translate 'close' %}</button>
+            </div>
+         </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="rejectOrder" tabindex="-1" role="dialog" aria-labelledby="rejectOrder" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="rejectOrder">{% translate 'reject order'  %}</h5>
+        </div>
+        <div class="modal-body">
+            <form action="#" method="post" class="forms-sample2">
+                {% csrf_token %}
+            <div class="form-group row align-items-center">
+                <p class="col-sm-8">{% translate 'are you sure rejecting this order'  %} ?</p>
+            </div>
+            <div class="modal-footer">
+          <button type="submit" class="btn btn-gradient-primary mr-2">{% translate 'submit' %}</button>
+          <button class="btn btn-light"  data-dismiss="modal">{% translate 'close' %}</button>
+            </div>
+         </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endblock %}
 {% block js %}a

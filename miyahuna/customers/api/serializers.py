@@ -13,8 +13,11 @@ class CustomerSerializer(serializers.ModelSerializer):
     customer_name= serializers.SerializerMethodField()
     customer_PhoneNumber = serializers.SerializerMethodField()
     customer_lastOrderDate = serializers.SerializerMethodField()
-    # customer_allsales = serializers.SerializerMethodField()
+    customer_allsales = serializers.SerializerMethodField()
     customer_update_link = serializers.SerializerMethodField()
+    customer_accepted_orders_count = serializers.SerializerMethodField()
+    customer_orders_url = serializers.SerializerMethodField()
+
 
     def get_customer_name(self,obj):
         return obj.user.get_full_name()
@@ -29,13 +32,26 @@ class CustomerSerializer(serializers.ModelSerializer):
         else:
             return _("there's no orders")
 
+    def get_customer_accepted_orders_count(self, obj):
+        return obj.user.m_user_orders.filter(order_status=1).count()
+
     def get_customer_update_link(self, obj):
          return reverse('UpdateCustomer', kwargs={'pk': obj.pk})
 
+    def get_customer_allsales(self, obj):
+        orders = obj.user.m_user_orders.filter(order_status=1)
+        price = obj.price_per_gallon
+        sum = 0
+        for x in orders:
+           sum += x.num_of_gallon * price
+        return sum
+
+    def get_customer_orders_url(self, obj):
+        return reverse('CustomerOrderHistory', kwargs={'pk': obj.pk})
 
     class Meta:
         model = Customer
-        fields = ['price_per_gallon', 'customer_name', 'customer_PhoneNumber', 'customer_lastOrderDate', 'customer_update_link']
+        fields = ['price_per_gallon', 'customer_name', 'customer_PhoneNumber', 'customer_lastOrderDate', 'customer_update_link', 'customer_accepted_orders_count', 'customer_allsales', 'customer_orders_url']
 
 
 class CustomerUser(serializers.ModelSerializer):

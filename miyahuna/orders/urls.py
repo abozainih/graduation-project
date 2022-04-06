@@ -4,5 +4,9 @@ from .api import urls
 urlpatterns = [
     path('create/', views.OrderCreateView.as_view(), name='CreateOrder'),
     path('list/', views.OrderListView.as_view(), name='OrderList'),
+    path('accept/<pk>', views.AcceptOrder.as_view(), name='AcceptOrder'),
+    path('reject/<pk>', views.RejectOrder.as_view(), name='RejectOrder'),
+    path('history/', views.OrderHistory.as_view(), name='OrderHistory'),
+    path('<pk>', views.CustomerOrderHistory.as_view(), name='CustomerOrderHistory'),
     path('api/', include(urls)),
 ]

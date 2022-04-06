@@ -12,7 +12,7 @@ class CreateOrderForm(forms.ModelForm):
     phone_number = PhoneNumberField(required=True, label=_('phone number'))
 
     class Meta:
-        fields = ['customer_name', 'phone_number', 'num_of_gallon', 'is_paid']
+        fields = ['customer_name', 'phone_number', 'num_of_gallon']
         model = Order
 
 
@@ -20,8 +20,4 @@ class CreateOrderForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         for visible in self.visible_fields():
-            if visible.field.widget.input_type == "checkbox":
-                visible.field.widget.attrs['class'] = ''
-                visible.field.widget.attrs['style'] = 'transform:scale(1.5)'
-            else:
                 visible.field.widget.attrs['class'] = 'form-control'

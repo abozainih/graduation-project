@@ -17,9 +17,8 @@ class Order(models.Model):
     num_of_gallon = models.IntegerField(blank=False, verbose_name=_("number of gallons"))
     made_by = models.ForeignKey(User, related_name="user_orders",on_delete=models.CASCADE)
     order_date = models.DateField(auto_now_add=True, verbose_name=_("order date"))
-    is_paid = models.BooleanField(verbose_name=_('is paid'))
     order_status = models.IntegerField(default=pending, choices=status, verbose_name=_('order status'))
     made_for = models.ForeignKey(User, related_name="m_user_orders", on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.made_by.get_full_name() + " Order"
+        return self.made_for.get_full_name() + " Order"

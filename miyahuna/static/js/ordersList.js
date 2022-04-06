@@ -4,7 +4,6 @@ $(document).ready(function() {
         responsive: true,
         language: {
             url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/ar.json',
-            searchPlaceholder:'ابحث عن موظف',
          },
          dom: 'Bfrtp',
          columns : [
@@ -12,15 +11,23 @@ $(document).ready(function() {
             null,
             null,
             null,
+            {'data': 'order_total_price', 'render': function(data,type,row,meta){
+
+                return "<label class='badge badge-info'>" + row.order_status_name + "</label>"
+            }
+            },
+            {'data': 'order_total_price', 'render': function(data,type,row,meta){
+
+                return data + "<i class='mdi mdi-currency-ils px-1'> </i>"
+            }
+            },
             null,
-            null,
-            null,
-            {'data': 'employee_update_link', 'render': function(data,type,row,meta){
+            {'data': 'actions', 'render': function(data,type,row,meta){
 
                 return `
                     <div>
-                        <button data-toggle="modal" data-target="#addAbsence" data-tool="tooltip" data-placement="top" title="الغاء الطلب" data-url="#" class="addAbsence btn btn-sm btn-danger mdi mdi-delete"></button>
-                        <button data-toggle="modal" data-target="#addAbsence" data-tool="tooltip" data-placement="top" title="تأكيد الطلب" data-url="#" class="addAbsence btn btn-sm btn-success mdi mdi-check-bold"></button>
+                        <button data-toggle="modal" data-target="#rejectOrder" data-tool="tooltip" data-placement="top" title="الغاء الطلب" data-url="${row.reject_order_url}" class="btn btn-sm btn-danger mdi mdi-delete"></button>
+                        <button data-toggle="modal" data-target="#acceptOrder" data-tool="tooltip" data-placement="top" title="تأكيد الطلب" data-url="${row.accept_order_url}" class="btn btn-sm btn-success mdi mdi-check-bold"></button>
                     </div>
                     `;
             }},
@@ -39,7 +46,7 @@ $(document).ready(function() {
                 text: 'عرض سجل الطلبات',
                 className:'btn btn-dark history dt-button',
                 action: function ( e, dt, button, config ) {
-                    window.location.href = '/orders/create/';
+                    window.location.href = '/orders/history/';
                 },
             },
         ],
@@ -59,12 +66,12 @@ $(document).ready(function() {
                 $( ".history" ).prepend("<i class='mdi mdi-history pl-2'></i>");
                 $('#widgits').addClass('align-items-baseline d-flex justify-content-end');
                 $('[data-tool="tooltip"]').tooltip({ trigger :'hover' });
-//                $('.addAbsence').click(function(){
-//                     $(".forms-sample").attr("action", $(this).attr('data-url'));
-//                })
-//                $("#create").click(function(){
-//                    window.location.href="{% url 'CreateCustomer' %}";
-//                });
+                $('[data-target="#acceptOrder"]').click(function(){
+                     $(".forms-sample").attr("action", $(this).attr('data-url'));
+                });
+                $('[data-target="#rejectOrder"]').click(function(){
+                     $(".forms-sample2").attr("action", $(this).attr('data-url'));
+                })
 
          }
     });
