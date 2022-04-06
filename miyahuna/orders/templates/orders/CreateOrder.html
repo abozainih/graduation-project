@@ -30,6 +30,12 @@ padding :0;
              </div>
     </div>
         {% endfor %}
+<div class="align-items-baseline form-group justify-content-around flex-nowrap row ">
+    <label>{% translate 'total price' %}</label>
+    <span id="fullprice" class="col-sm-9 text-danger font-weight-bolder">0 <i class="mdi mdi-currency-ils"></i></span>
+    <input type="text" class="d-none" id="price">
+</div>
+
 <input class="btn btn-gradient-primary font-weight-medium auth-form-btn" type="submit" value="{% translate 'submit' %}">
 </form>
 
@@ -54,13 +60,19 @@ padding :0;
 
                  onSelectItemEvent: function() {
                      var value = $("#id_customer_name").getSelectedItemData().customer_PhoneNumber.replaceAll(/\s/g,'');
-
+                     var price = $("#id_customer_name").getSelectedItemData().price_per_gallon
                      $("#id_phone_number").val(value).trigger("change");
+                     $("#price").val(price).trigger("change");
                  }
 
             },
             };
             $("#id_customer_name").easyAutocomplete(options);
+
+            $("#id_num_of_gallon").keyup(function(){
+                if($("#price").val())
+                    $("#fullprice").html($("#id_num_of_gallon").val() * $("#price").val() + ' <i class="mdi mdi-currency-ils"></i>')
+            })
         });
 
 
