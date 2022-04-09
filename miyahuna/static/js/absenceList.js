@@ -6,6 +6,21 @@ $(document).ready(function() {
          },
          dom: 'rtp',
 
+        columns: [
+
+            null,
+            null,
+            {'data': 'is_paid', 'render': function(data,type,row,meta){
+
+                if(data)
+                    return "<i class='mdi mdi-check-bold badge badge-success'></i>"
+                else
+                    return "<i class='mdi mdi-close-thick badge badge-danger'></i>"
+
+            }},
+
+        ],
+
         order: [[ 1, 'asc' ]],
 
         columnDefs: [

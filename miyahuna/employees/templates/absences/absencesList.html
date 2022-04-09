@@ -11,6 +11,9 @@
         .form-group {
             margin-bottom : 0.3rem;
          }
+         .badge:empty{
+            display:inline-block
+         }
     </style>
 {% endblock %}
 {% block content %}
@@ -21,7 +24,7 @@
                               <tr>
                                  <th data-data="null"></th>
                                  <th data-data="ab_date">{% translate "absence date" %}</th>
-                                 <th data-data="is_paid" >{% translate "is paid" %}</th>
+                                 <th data-data="null" >{% translate "is paid" %}</th>
                               </tr>
                            </thead>
                         </table>
