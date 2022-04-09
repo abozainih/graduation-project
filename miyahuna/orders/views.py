@@ -1,9 +1,12 @@
 import datetime
+from decimal import Decimal
 
 import django.views
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
+from django.views import View
 
 from accounts.models import User
 from customers.models import Customer
@@ -74,3 +77,15 @@ class CustomerOrderHistory(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context.update({"customer": Customer.objects.get(pk=self.kwargs['pk'])})
         return context
+
+
+class OrdersSalesCount(LoginRequiredMixin, View):
+
+    def get(self, request, start, end):
+        orders = Order.objects.filter(order_status=1, order_date__range=[start, end])
+        sum = 0
+        for obj in orders:
+            sum += obj.made_for.user_customer.all()[0].price_per_gallon * obj.num_of_gallon
+
+        sum = Decimal(sum).normalize()
+        return JsonResponse({'ordersSales': sum})

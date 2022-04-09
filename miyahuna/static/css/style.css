@@ -10838,7 +10838,7 @@ address p {
     .sidebar-icon-only .navbar .navbar-brand-wrapper .brand-logo {
       display: none; }
     .sidebar-icon-only .navbar .navbar-brand-wrapper .brand-logo-mini {
-      display: inline-block; }
+      display: inline-block  !important; }
   .sidebar-icon-only .navbar .navbar-menu-wrapper {
     width: calc(100% - 70px); }
   .sidebar-icon-only .sidebar {

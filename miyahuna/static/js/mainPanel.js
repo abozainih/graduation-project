@@ -71,29 +71,69 @@ var myChart = new Chart(ctx1, {
 });
 
 $(function() {
-    
-    var start = moment().subtract(29, 'days');
-    var end = moment();
+
+    var start = moment().startOf('month');
+    var end = moment().endOf('month');
 
     function cb(start, end) {
-        $('#reportrange span').html(start.format('D, MM, YYYY') + ' - ' + end.format('D, MM, YYYY'));
+        $('#reportrange span').html(start.format('D-MM-YYYY') + ' - ' + end.format('D-MM-YYYY'));
+        $.ajax({url: "orders/sales/"+start.format('YYYY-MM-DD')+"/"+end.format('YYYY-MM-DD'), success: function(result){
+                 jQuery({ Counter: 0 }).animate({ Counter: result.ordersSales }, {
+                    duration: 1000,
+                    easing: 'swing',
+                    step: function () {
+                      $("#sales").text(Math.ceil(this.Counter));
+                    }
+                  });
+           }});
     }
 
     $('#reportrange').daterangepicker({
-        startDate: start,
-        endDate: end,
+
+        "showDropdowns": true,
+        "minYear": 2000,
+        "autoApply": true,
         ranges: {
-           'Today': [moment(), moment()],
-           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-           'This Month': [moment().startOf('month'), moment().endOf('month')],
-           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            'Today': [moment(), moment()],
+            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+
+        "startDate": moment().subtract(1, 'days'),
+        "endDate": moment().subtract(1, 'days'),
+        "opens": "left",
+        "maxDate": moment(),
+        "drops": "auto"
+    }, function(start, end, label) {
+        $('#reportrange span').html(start.format('D-MM-YYYY') + ' - ' + end.format('D-MM-YYYY'));
+
+           $.ajax({url: "orders/sales/"+start.format('YYYY-MM-DD')+"/"+end.format('YYYY-MM-DD'), success: function(result){
+                 jQuery({ Counter: 0 }).animate({ Counter: result.ordersSales }, {
+                    duration: 1000,
+                    easing: 'swing',
+                    step: function () {
+                      $("#sales").text(Math.ceil(this.Counter));
+                    }
+                  });
+           }});
         }
-    }, cb);
+    );
 
     cb(start, end);
+    $('.counter').each(function(){
+         var $this = $(this);
+         jQuery({ Counter: 0 }).animate({ Counter: $this.attr('data-value') }, {
+            duration: 1000,
+            easing: 'swing',
+            step: function () {
+               $this.text(Math.ceil(this.Counter));
+            }
+         });
 
+    });
 });
 
 
