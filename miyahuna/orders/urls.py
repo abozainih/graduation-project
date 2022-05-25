@@ -7,6 +7,7 @@ urlpatterns = [
     path('accept/<pk>', views.AcceptOrder.as_view(), name='AcceptOrder'),
     path('reject/<pk>', views.RejectOrder.as_view(), name='RejectOrder'),
     path('history/', views.OrderHistory.as_view(), name='OrderHistory'),
+    path('last-year/', views.LastYearSales.as_view(), name='LastYearSales'),
     path('<int:pk>', views.CustomerOrderHistory.as_view(), name='CustomerOrderHistory'),
     path('sales/<start>/<end>', views.OrdersSalesCount.as_view(), name="OrdersSales"),
     path('api/', include(urls)),

@@ -1,18 +1,17 @@
+import calendar
 import datetime
 from decimal import Decimal
 
 import django.views
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
-from django.shortcuts import render
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views import View
 
 from accounts.models import User
 from customers.models import Customer
 from .forms import CreateOrderForm
 from .models import Order
-# Create your views here.
 from django.views.generic import CreateView, TemplateView
 from django.shortcuts import redirect
 
@@ -89,3 +88,22 @@ class OrdersSalesCount(LoginRequiredMixin, View):
 
         sum = Decimal(sum).normalize()
         return JsonResponse({'ordersSales': sum})
+
+
+class LastYearSales(LoginRequiredMixin, View):
+
+    def get(self, request):
+        today = datetime.datetime.today()
+        year = today.year
+        data = {}
+        month = 1
+        months_names = list(calendar.month_name)
+        while month <= 12:
+            data[months_names[month]] = 0
+            orders = Order.objects.filter(order_status=1, order_date__month=month, order_date__year=year)
+
+            for obj in orders:
+                data[months_names[month]] += obj.num_of_gallon * obj.made_for.user_customer.all()[0].price_per_gallon
+            month += 1
+
+        return JsonResponse(data)
