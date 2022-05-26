@@ -14,22 +14,11 @@ padding :0;
 
 </style>
       {% endblock %}
-
+{% load crispy_forms_tags %}
 {% block content %}
-{% for field in form %}
-    {{ field.errors }}
-{% endfor %}
 <form action="{% url 'CreateOrder' %}" method='post'>
-    {% csrf_token %}
-
-{% for field in form %}
-<div class="align-items-baseline form-group justify-content-around flex-nowrap row ">
-        {{ field.label_tag }}
-            <div class="col-sm-9">
-             {{ field }}
-             </div>
-    </div>
-        {% endfor %}
+    {%csrf_token%}
+    {{ form|crispy }}
 <div class="align-items-baseline form-group justify-content-around flex-nowrap row ">
     <label>{% translate 'total price' %}</label>
     <span id="fullprice" class="col-sm-9 text-danger font-weight-bolder">0 <i class="mdi mdi-currency-ils"></i></span>

@@ -3,6 +3,8 @@ from accounts.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext_lazy as _
 from customers.models import Customer
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 
 
 class CreateCustomerForm(UserCreationForm):
@@ -15,9 +17,9 @@ class CreateCustomerForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
-        for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control'
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', _('save'), css_class='btn btn-gradient-primary font-weight-medium auth-form-btn'))
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -38,6 +40,6 @@ class UpdateCustomerForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
-        for visible in self.visible_fields():
-            visible.field.widget.attrs['class'] = 'form-control'
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', _('save'), css_class='btn btn-gradient-primary font-weight-medium auth-form-btn'))

@@ -4,28 +4,14 @@
 {% block cardtitle %}
     {% translate 'add employee' %}
 {% endblock %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-{% for field in form %}
-{% if field.errors %}
-{{ field.errors }} {{ field.name }}
-{%endif%}
-{% endfor %}
-<form action="{% url 'CreateEmployee' %}" method='post'>
+    <form action="{% url 'CreateEmployee' %}" method='post'>
     {% csrf_token %}
+      {% crispy form %}
 
-{% for field in form.visible_fields %}
-    <div class="align-items-baseline form-group justify-content-around row ">
-        {{ field.label_tag }}
-            <div class="col-sm-9">
-             {{ field }}
-             </div>
-    </div>
-
-        {% endfor %}
-<input class="btn btn-gradient-primary font-weight-medium auth-form-btn" type="submit" value="{% translate 'submit' %}">
-</form>
-
+    </form>
 
 {% endblock %}
 

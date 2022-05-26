@@ -8,7 +8,7 @@ from django.utils.translation import gettext_lazy as _
 
 class CreateOrderForm(forms.ModelForm):
 
-    customer_name = forms.CharField(required=False, label=_('customer name'))
+    customer_name = forms.CharField(required=True, label=_('customer name'))
     phone_number = PhoneNumberField(required=True, label=_('phone number'))
 
     class Meta:
