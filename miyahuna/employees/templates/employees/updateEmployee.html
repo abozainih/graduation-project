@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block cardtitle %}
+    {% translate 'update employee' %}
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form action="{% url 'UpdateEmployee' object.employee_user.pk %}" method='post'>
+        {% csrf_token %}
+      {% crispy form %}
+    </form>
+
+{% endblock %}
+
+{% block js %}
+<script>
+        $(document).ready(function(){
+            $(".card").addClass("col-6");
+        });
+</script>
+{% endblock %}

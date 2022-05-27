@@ -2,27 +2,15 @@
 {% load static %}
 {% load i18n %}
 {% block cardtitle %}
-    {% translate 'add customer' %}
+    {% translate 'update customer' %}
 {% endblock %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-{% for field in form %}
-    {{ field.errors }}
-{% endfor %}
-<form action="{% url 'UpdateCustomer' object.user_customer.first.pk %}" method='post'>
-    {% csrf_token %}
-
-{% for field in form %}
-<div class="align-items-baseline form-group justify-content-around row ">
-        {{ field.label_tag }}
-            <div class="col-sm-9">
-             {{ field }}
-             </div>
-    </div>
-        {% endfor %}
-<input class="btn btn-gradient-primary font-weight-medium auth-form-btn" type="submit" value="{% translate 'submit' %}">
-</form>
-
+    <form action="{% url 'UpdateCustomer' object.user_customer.first.pk %}" method='post'>
+        {% csrf_token %}
+        {% crispy form %}
+    </form>
 
 {% endblock %}
 

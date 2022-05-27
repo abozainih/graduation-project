@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block cardtitle %}
+    {% translate 'orders history' %} : {{ customer.user.get_full_name }}
+{% endblock %}
+{% block css %}
+   <link rel="stylesheet" href="{% static 'css/dataTables.bootstrap4.min.css' %}">
+    <style>
+        .form-group {
+            margin-bottom : 0.3rem;
+         }
+    </style>
+{% endblock %}
+{% block content %}
+
+
+                        <table  id="ordersHistory" data-server-side="false" data-ajax="{% url 'CustomerOrdersListView' pk %}?format=datatables" class="table table-hover dt-responsive nowrap">
+                           <thead>
+                              <tr>
+                                 <th data-data="null"></th>
+                                  <th data-data="order_date">{% translate "order date" %}</th>
+                                 <th data-data="num_of_gallon">{% translate "number of gallons" %}</th>
+                                 <th data-data="null">{% translate "order status" %}</th>
+                                  <th data-data="order_total_price">{% translate "total price" %}</th>
+                              </tr>
+                           </thead>
+                        </table>
+{% endblock %}
+{% block js %}a
+
+<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'js/customerOrderHistory.js' %}"></script>
+
+
+{% endblock %}

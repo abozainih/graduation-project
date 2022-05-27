@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block cardtitle %}
+    {% translate 'absences history' %} : {{ employee.user.get_full_name }}
+{% endblock %}
+{% block css %}
+   <link rel="stylesheet" href="{% static 'css/dataTables.bootstrap4.min.css' %}">
+    <style>
+        .form-group {
+            margin-bottom : 0.3rem;
+         }
+         .badge:empty{
+            display:inline-block
+         }
+    </style>
+{% endblock %}
+{% block content %}
+
+
+                        <table  id="absenceList" data-server-side="false" data-ajax="{% url 'absencelistapi' pk %}?format=datatables" class="table table-hover dt-responsive nowrap">
+                           <thead>
+                              <tr>
+                                 <th data-data="null"></th>
+                                 <th data-data="ab_date">{% translate "absence date" %}</th>
+                                 <th data-data="null" >{% translate "is paid" %}</th>
+                              </tr>
+                           </thead>
+                        </table>
+
+{% endblock %}
+{% block js %}a
+
+<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'js/absenceList.js' %}"></script>
+{% endblock %}

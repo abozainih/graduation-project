@@ -1,3 +1,5 @@
+from django.db.models import Value
+from django.db.models.functions import Concat
 from django.shortcuts import redirect, get_object_or_404
 from rest_framework.response import Response
 
@@ -5,33 +7,31 @@ from accounts.models import User
 from .serializers import CustomerSerializer, CustomerUser
 from customers.models import Customer
 from rest_framework import generics, serializers
-from rest_framework.permissions import IsAdminUser
+from . import access
 
 
 class CustomerListView(generics.ListAPIView):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [access.IsAdminUser]
 
 
 class CustomerCreateView(generics.CreateAPIView):
     serializer_class = CustomerUser
-    permission_classes = [IsAdminUser]
+    permission_classes = [access.IsAdminUser]
 
     def post(self, *args, **kwargs):
         super().post(*args, **kwargs)
         return redirect('CustomersList')
 
 
+class CustomerFilterView(generics.ListAPIView):
+    serializer_class = CustomerSerializer
 
+    def get_queryset(self):
+        query = Customer.objects.annotate(fullname=Concat('user__first_name', Value(' '), 'user__last_name'))
+        return query.filter(fullname__icontains=self.request.GET['data'])
 
-# class CustomerUpdateView(generics.UpdateAPIView):
-#     serializer_class = CustomerUser
-#     lookup_field = 'pk'
-#
-#     def get_object(self):
-#         pk = self.kwargs["pk"]
-#         return get_object_or_404(Customer, pk=pk)
 
 
 class CustomerUpdateView(generics.RetrieveUpdateAPIView):

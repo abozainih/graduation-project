@@ -1,0 +1,74 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block cardtitle %}
+    {% translate 'Employees' %}
+{% endblock %}
+{% block css %}
+   <link rel="stylesheet" href="{% static 'css/dataTables.bootstrap4.min.css' %}">
+    <style>
+        .form-group {
+            margin-bottom : 0.3rem;
+         }
+
+         .badge:empty{
+            display:inline-block;
+         }
+    </style>
+{% endblock %}
+{% block content %}
+
+
+                        <table  id="employeesList" data-server-side="false" data-ajax="http://127.0.0.1:8000/employees/api/list/?format=datatables" class="table table-hover dt-responsive nowrap">
+                           <thead>
+                              <tr>
+                                 <th data-data="null"></th>
+                                 <th data-data="employee_name">{% translate "Full name" %}</th>
+                                 <th data-data="employee_PhoneNumber" >{% translate "Phone number" %}</th>
+                                 <th data-data="salary_per_day">{% translate "salary per day" %}</th>
+                                 <th data-data="is_data_entry">{% translate "data entry" %}</th>
+                                  <th data-data="absences_count">{% translate "absence for this month" %} ({% now 'n' %})</th>
+                                  <th>{% translate 'actions' %}</th>
+                              </tr>
+                           </thead>
+                        </table>
+
+
+
+<div class="modal fade" id="addAbsence" tabindex="-1" role="dialog" aria-labelledby="addAbsence" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addAbsence">{% translate 'add absence' %}</h5>
+        </div>
+        <div class="modal-body">
+            <form action="#" method="post" class="forms-sample">
+                {% csrf_token %}
+            <div class="form-group row align-items-center">
+               <label class="col-sm-3 col-form-label">{% translate 'is paid' %}</label>
+               <input type="checkbox" style="transform:scale(2);" name="is_paid">
+            </div>
+            <div class="modal-footer">
+          <button type="submit" class="btn btn-gradient-primary mr-2">{% translate 'submit' %}</button>
+          <button class="btn btn-light"  data-dismiss="modal">{% translate 'close' %}</button>
+            </div>
+         </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block js %}a
+
+<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'js/employeesList.js' %}"></script>
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+{% endblock %}

@@ -1,7 +1,8 @@
 from django.db import models
 from accounts.models import User
 from django.utils.translation import gettext_lazy as _
-# Create your models here.
+
+
 
 class Customer(models.Model):
 
@@ -10,3 +11,8 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.user.get_full_name()
+
+    class Meta:
+        app_label = 'customers'
+
+

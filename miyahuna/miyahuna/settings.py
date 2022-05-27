@@ -38,10 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'accounts',
+    'crispy_forms',
     'phonenumber_field',
+    'accounts',
+    'employees',
     'customers',
-    'orders'
+    'orders',
+
 
 ]
 
@@ -68,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'accounts.context_processors.rules_processor'
             ],
         },
     },
@@ -94,7 +98,7 @@ DATABASES = {
         }
     }
 }
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
