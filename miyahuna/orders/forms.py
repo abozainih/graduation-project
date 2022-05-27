@@ -16,8 +16,8 @@ class CreateOrderForm(forms.ModelForm):
         model = Order
 
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+class CustomerCreateOrderForm(forms.ModelForm):
 
-        for visible in self.visible_fields():
-                visible.field.widget.attrs['class'] = 'form-control'
+    class Meta:
+        fields = ['num_of_gallon']
+        model = Order

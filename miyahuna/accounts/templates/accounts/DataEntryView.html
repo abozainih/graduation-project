@@ -1,10 +1,9 @@
-
-{% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
 {% block cardtitle %}
     {% translate 'pending orders' %}
 {% endblock %}
+{% include  "css.html" %}
 {% block css %}
    <link rel="stylesheet" href="{% static 'css/dataTables.bootstrap4.min.css' %}">
     <style>
@@ -14,7 +13,6 @@
     </style>
 {% endblock %}
 {% block content %}
-
 
                         <table  id="ordersList" data-server-side="false" data-ajax="http://127.0.0.1:8000/orders/api/list/?format=datatables" class="table table-hover dt-responsive nowrap">
                            <thead>
@@ -77,12 +75,14 @@
   </div>
 
 {% endblock %}
+{% include 'js.html' %}
 {% block js %}
 
 <script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
 <script src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
 <script src="{% static 'js/dataTables.buttons.min.js' %}"></script>
 <script src="{% static 'js/ordersList.js' %}"></script>
+
 <script>
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();

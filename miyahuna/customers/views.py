@@ -3,19 +3,19 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView
-# Create your views here.
+from accounts.mixins import AdminMixin
 import accounts.models
 from customers.forms import UpdateCustomerForm, CreateCustomerForm
 from customers.models import Customer
 
 
-class CustomersListView(LoginRequiredMixin, TemplateView):
+class CustomersListView(AdminMixin, TemplateView):
     template_name = "customers/customersList.html"
     login_url = reverse_lazy("login")
     redirect_field_name = 'redirect_to'
 
 
-class CustomersCreateView(LoginRequiredMixin, django.views.generic.CreateView):
+class CustomersCreateView(AdminMixin, django.views.generic.CreateView):
     template_name = "customers/addCustomer.html"
     login_url = reverse_lazy("login")
     model = accounts.models.User
@@ -23,7 +23,7 @@ class CustomersCreateView(LoginRequiredMixin, django.views.generic.CreateView):
     success_url = reverse_lazy("CustomersList")
 
 
-class CustomersUpdateView(LoginRequiredMixin, django.views.generic.UpdateView):
+class CustomersUpdateView(AdminMixin, django.views.generic.UpdateView):
     template_name = "customers/updateCustomer.html"
     login_url = reverse_lazy("login")
     model = accounts.models.User

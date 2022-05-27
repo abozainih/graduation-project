@@ -2,18 +2,20 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, UpdateView
+
+from accounts.mixins import AdminMixin
 from accounts.models import User
 from employees.forms import CreateDataEntryEmployeeForm, CreateEmployeeForm, UpdateEmployeeForm
 from employees.models import Employee, Absence
 
 
-class EmployeesListView(LoginRequiredMixin, TemplateView):
+class EmployeesListView(AdminMixin, TemplateView):
     template_name = "employees/employeesList.html"
     login_url = reverse_lazy("login")
     redirect_field_name = 'redirect_to'
 
 
-class DataEntryEmployeeCreateView(LoginRequiredMixin, CreateView):
+class DataEntryEmployeeCreateView(AdminMixin, CreateView):
     template_name = "employees/addDataEntryEmployee.html"
     login_url = reverse_lazy("login")
     model = User
@@ -21,7 +23,7 @@ class DataEntryEmployeeCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy("EmployeesList")
 
 
-class EmployeeCreateView(LoginRequiredMixin, CreateView):
+class EmployeeCreateView(AdminMixin, CreateView):
     template_name = "employees/addEmployee.html"
     login_url = reverse_lazy("login")
     model = User
@@ -29,19 +31,16 @@ class EmployeeCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy("EmployeesList")
 
 
-
-class EmployeeUpdateView(LoginRequiredMixin, UpdateView):
+class EmployeeUpdateView(AdminMixin, UpdateView):
     template_name = "employees/updateEmployee.html"
     login_url = reverse_lazy("login")
     model = User
     success_url = reverse_lazy("EmployeesList")
     form_class = UpdateEmployeeForm
 
-
     def get_object(self, queryset=None):
         employee = Employee.objects.get(pk=self.kwargs['pk'] )
         return User.objects.get(pk=employee.user.id)
-
 
     def get_initial(self):
         initial = super().get_initial()
@@ -58,7 +57,7 @@ class EmployeeUpdateView(LoginRequiredMixin, UpdateView):
         return response
 
 
-class AbsenceCreateView(LoginRequiredMixin, CreateView):
+class AbsenceCreateView(AdminMixin, CreateView):
     http_method_names = ['post']
     login_url = reverse_lazy("login")
     model = Absence
@@ -75,11 +74,10 @@ class AbsenceCreateView(LoginRequiredMixin, CreateView):
             return self.form_invalid(form)
 
 
-class AbsenceListView(LoginRequiredMixin, TemplateView):
+class AbsenceListView(AdminMixin, TemplateView):
     template_name = "absences/absencesList.html"
     login_url = reverse_lazy("login")
     redirect_field_name = 'redirect_to'
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

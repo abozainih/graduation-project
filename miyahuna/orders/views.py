@@ -10,7 +10,8 @@ from django.views import View
 
 from accounts.models import User
 from customers.models import Customer
-from .forms import CreateOrderForm
+from .forms import CreateOrderForm, CustomerCreateOrderForm
+from accounts.mixins import AdminAndEmployeeMixin, AdminMixin
 from .models import Order
 from django.views.generic import CreateView, TemplateView
 from django.shortcuts import redirect
@@ -32,13 +33,49 @@ class OrderCreateView(LoginRequiredMixin, CreateView):
         return response
 
 
-class OrderListView(LoginRequiredMixin, TemplateView):
+class CustomerOrderCreateView(LoginRequiredMixin, CreateView):
+
+    template_name = "orders/CustomerCreateOrder.html"
+    login_url = reverse_lazy("login")
+    form_class = CustomerCreateOrderForm
+    redirect_field_name = 'redirect_to'
+    success_url = reverse_lazy("mainpanel")
+
+    def form_valid(self, form):
+        form.instance.made_for = self.request.user
+        form.instance.made_by = self.request.user
+        form.instance.order_status = 0
+        response = super().form_valid(form)
+        form.instance.save()
+        return response
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        extra_context = {
+            'price': self.request.user.user_customer.all()[0].price_per_gallon
+        }
+        context.update(extra_context)
+
+        return context
+
+
+class OrderListView(AdminAndEmployeeMixin, TemplateView):
     template_name = "orders/ordersList.html"
     login_url = reverse_lazy("login")
     redirect_field_name = 'redirect_to'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        extra_context = {
+            'isAdmin': self.request.user.is_staff and self.request.user.is_superuser,
+            'isEmployee': hasattr(self.request.user, 'employee_user') and self.request.user.is_active,
+        }
+        context.update(extra_context)
 
-class AcceptOrder(LoginRequiredMixin, django.views.View):
+        return context
+
+
+class AcceptOrder(AdminAndEmployeeMixin, django.views.View):
     http_method_names = ['post']
     login_url = reverse_lazy("login")
     redirect_field_name = 'redirect_to'
@@ -49,7 +86,8 @@ class AcceptOrder(LoginRequiredMixin, django.views.View):
         order.save()
         return redirect("OrderList")
 
-class RejectOrder(LoginRequiredMixin, django.views.View):
+
+class RejectOrder(AdminAndEmployeeMixin, django.views.View):
     http_method_names = ['post']
     login_url = reverse_lazy("login")
     redirect_field_name = 'redirect_to'
@@ -61,11 +99,20 @@ class RejectOrder(LoginRequiredMixin, django.views.View):
         return redirect("OrderList")
 
 
-class OrderHistory(LoginRequiredMixin, TemplateView):
+class OrderHistory(AdminAndEmployeeMixin, TemplateView):
     template_name = "orders/orderHistory.html"
     login_url = reverse_lazy("login")
     redirect_field_name = 'redirect_to'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        extra_context = {
+            'isAdmin': self.request.user.is_staff and self.request.user.is_superuser,
+            'isEmployee': hasattr(self.request.user, 'employee_user') and self.request.user.is_active,
+        }
+        context.update(extra_context)
+
+        return context
 
 class CustomerOrderHistory(LoginRequiredMixin, TemplateView):
     template_name = "orders/customerOrderHistory.html"
@@ -78,7 +125,7 @@ class CustomerOrderHistory(LoginRequiredMixin, TemplateView):
         return context
 
 
-class OrdersSalesCount(LoginRequiredMixin, View):
+class OrdersSalesCount(AdminMixin, View):
 
     def get(self, request, start, end):
         orders = Order.objects.filter(order_status=1, order_date__range=[start, end])
@@ -90,7 +137,7 @@ class OrdersSalesCount(LoginRequiredMixin, View):
         return JsonResponse({'ordersSales': sum})
 
 
-class LastYearSales(LoginRequiredMixin, View):
+class LastYearSales(AdminMixin, View):
 
     def get(self, request):
         today = datetime.datetime.today()

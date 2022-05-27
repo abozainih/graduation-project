@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block cardtitle %}
+    {% translate 'create order' %}
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form action="{% url 'CustomerCreateOrder' %}" method='post'>
+    {%csrf_token%}
+    {{ form|crispy }}
+<div class="align-items-baseline form-group justify-content-around flex-nowrap row ">
+    <label>{% translate 'total price' %}</label>
+    <span id="fullprice" class="col-sm-9 text-danger font-weight-bolder">0 <i class="mdi mdi-currency-ils"></i></span>
+    <input type="text" class="d-none" id="price" value="{{price}}">
+</div>
+
+<input class="btn btn-gradient-primary font-weight-medium auth-form-btn" type="submit" value="{% translate 'submit' %}">
+</form>
+
+
+{% endblock %}
+
+{% block js %}
+    <script !src="">
+        $(document).ready(function(){
+                $(".card").addClass("col-6");
+                $("#id_num_of_gallon").keyup(function(){
+                    if($("#price").val() && $("#id_num_of_gallon").val())
+                        $("#fullprice").html(parseInt($("#id_num_of_gallon").val()) * parseInt($("#price").val()) + ' <i class="mdi mdi-currency-ils"></i>')
+                    else
+                         $("#fullprice").html('0 ' + ' <i class="mdi mdi-currency-ils"></i>');
+                })
+        })
+    </script>
+{% endblock %}

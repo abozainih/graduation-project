@@ -32,8 +32,6 @@ class UpdateProfileForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', _('save'), css_class='btn btn-gradient-primary font-weight-medium auth-form-btn'))
-        self.helper.add_input(Submit('submit', _('save'), css_class='btn btn-gradient-primary font-weight-medium auth-form-btn'))
-
 
 
 
