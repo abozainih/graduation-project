@@ -7,9 +7,10 @@ class AdminAndEmployeeMixin(AccessMixin):
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             return self.handle_no_permission()
-        if not request.user.is_staff or (hasattr(request.user, 'Employee_user') and not request.user.is_active):
+        if request.user.is_staff or (hasattr(request.user, 'employee_user') and  request.user.is_active):
+            return super().dispatch(request, *args, **kwargs)
+        else:
             return self.handle_no_permission()
-        return super().dispatch(request, *args, **kwargs)
 
 
 class AdminMixin(AccessMixin):

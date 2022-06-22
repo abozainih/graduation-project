@@ -9,6 +9,7 @@ django-phonenumber-field = {extras = ["phonenumbers"], version = "*"}
 djangorestframework = "*"
 djangorestframework-datatables = "*"
 django-crispy-forms = "*"
+mysqlclient = "*"
 
 [dev-packages]
 
