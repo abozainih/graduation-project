@@ -7,7 +7,7 @@ $.ajax({
                 data: {
                     labels: ['يناير', 'فبراير', 'مارس', 'ابريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'],
                     datasets: [{
-                        label: "مبيعات اخر سنه (" + (new Date().getFullYear() - 1) + ")",
+                        label: "عدد الطلبات لكل شهر في اخر سنه (" + (new Date().getFullYear() - 1) + ")",
                         data: Object.values(result),
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
